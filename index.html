@@ -2364,7 +2364,7 @@ window.RASEEDO_DEMO={"schema":"raseedo.backup/1","generatedAt":"2026-09-19T00:00
       opts.appendChild(el('button', { class:'row', onclick:()=>inviteSheet(p) }, [
         el('div', { class:'ico', style:{background:'var(--apricot)'} }, [U.icon('person',17)]),
         el('div', { class:'mid' }, [ el('div',{class:'t',text:T('people.invite')}),
-          el('div',{class:'s',text: p.inviteState==='invited' ? T('cloud.inviteSent') : T('cloud.inviteNone')}) ]),
+          el('div',{class:'s',text: p.inviteState==='invited' ? T('people.inviteSent') : T('people.inviteNone')}) ]),
         U.icon('chevron',16)
       ]));
     }
