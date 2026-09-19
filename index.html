@@ -3584,7 +3584,17 @@ window.RASEEDO_DEMO={"schema":"raseedo.backup/1","generatedAt":"2026-09-19T00:00
           .catch(() => { U.toast(T('cloud.badCode')); start(); });
       } else start();
       if ('serviceWorker' in navigator){
-        try { navigator.serviceWorker.register('sw.js', { scope:'./' }).catch(()=>{}); } catch(e){}
+        try {
+          navigator.serviceWorker.register('sw.js', { scope:'./', updateViaCache:'none' })
+            .then(reg => {
+              reg.update().catch(()=>{});
+              setInterval(() => reg.update().catch(()=>{}), 60 * 60 * 1000);
+            }).catch(()=>{});
+          let reloaded = false;
+          navigator.serviceWorker.addEventListener('controllerchange', () => {
+            if (reloaded) return; reloaded = true; location.reload();
+          });
+        } catch(e){}
       }
       return;
     }
