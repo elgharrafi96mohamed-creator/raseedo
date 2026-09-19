@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>سياسة الخصوصية — Raseedo</title>
+<link rel="icon" href="icon-192.png">
+<meta name="theme-color" content="#5351EB">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap">
+<style>
+:root{--primary:#5351EB;--apricot:#FFBF91;--text:#22243E;--muted:#74758B;--bg:#F6F6FC;
+ --surface:#fff;--border:#E6E6F2;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+ --primary:#8785FF;--text:#EEEEF6;--muted:#9A9BB4;--bg:#101223;--surface:#191B30;--border:#2C2F4C;color-scheme:dark}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);line-height:1.65;
+ font-family:"IBM Plex Sans Arabic","Plus Jakarta Sans",system-ui,sans-serif}
+.wrap{max-width:720px;margin-inline:auto;padding:28px 16px 64px}
+header{display:flex;align-items:center;gap:11px;margin-bottom:22px}
+header svg{width:40px;height:40px;border-radius:12px}
+header b{font-size:17px;display:block}header small{color:var(--muted);font-size:12px}
+h1{font-size:25px;margin:0 0 6px;letter-spacing:-.01em}
+.lead{color:var(--muted);margin:0 0 26px;font-size:14px}
+section{background:var(--surface);border:1px solid var(--border);border-radius:20px;
+ padding:20px 22px;margin-bottom:14px}
+h2{font-size:16px;margin:0 0 9px}
+h2 + p, h2 + ul{margin-top:0}
+p,li{font-size:14.5px}
+ul{padding-inline-start:20px;margin:8px 0}
+li{margin-bottom:5px}
+a{color:var(--primary)}
+.langs{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap}
+.langs button{border:1px solid var(--border);background:var(--surface);color:var(--muted);
+ border-radius:999px;padding:7px 15px;font:inherit;font-size:13px;font-weight:600;cursor:pointer}
+.langs button[aria-pressed="true"]{background:var(--primary);color:#fff;border-color:transparent}
+.foot{color:var(--muted);font-size:12.5px;text-align:center;margin-top:26px}
+[hidden]{display:none!important}
+code{background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:1px 6px;font-size:13px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+<svg viewBox="0 0 512 512" aria-hidden="true"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6A68F5"/><stop offset="1" stop-color="#4340D8"/></linearGradient></defs><rect width="512" height="512" rx="114" fill="url(#g)"/><g fill="#fff"><rect x="136" y="118" width="60" height="278" rx="22"/><path d="M150 118h180a58 58 0 0 1 58 58v62a58 58 0 0 1-58 58H150z"/><path d="M252 272a30 30 0 0 1 42 5l68 87a30 30 0 1 1-47 37l-68-87a30 30 0 0 1 5-42z"/></g><rect x="220" y="164" width="92" height="86" rx="30" fill="#5351EB"/><circle cx="349" cy="206" r="28" fill="#FFBF91"/></svg>
+<div><b>Raseedo · رصيدو</b><small>كل مبلغ، واضح. · Her tutar, net. · Every amount, clear.</small></div>
+</header>
+<div class="langs" role="group">
+<button data-l="ar" aria-pressed="true">العربية</button>
+<button data-l="tr" aria-pressed="false">Türkçe</button>
+<button data-l="en" aria-pressed="false">English</button>
+</div>
+
+<div data-lang="ar">
+<h1>سياسة الخصوصية</h1>
+<p class="lead">آخر تحديث: ١٩ سبتمبر ٢٠٢٦</p>
+<section><h2>ما الذي يحفظه رصيدو</h2>
+<ul>
+<li>عملياتك المالية: المبلغ والعملة والتاريخ والتصنيف والحساب والملاحظة، وما ترفقه من صور إيصالات.</li>
+<li>حساباتك ودفاترك وتصنيفاتك وميزانياتك وأهداف ادخارك.</li>
+<li>الأشخاص الذين تضيفهم بأسمائهم كما تكتبها أنت، والقيود بينك وبينهم.</li>
+<li>لغة الواجهة وشكل الأرقام والعملة الأساسية والمظهر.</li>
+</ul></section>
+<section><h2>ما الذي لا يحفظه</h2>
+<ul>
+<li>لا كلمة مرور: الدخول برمز جهاز أو رابط دعوة، لا بحساب وكلمة سرّ.</li>
+<li>لا موقع جغرافي، ولا جهات اتصال، ولا صور من معرض هاتفك إلا ما ترفقه بنفسك بقيد.</li>
+<li>لا معرّف إعلاني، ولا تتبّع، ولا إعلانات.</li>
+</ul></section>
+<section><h2>أين تُحفظ</h2>
+<p>على جهازك أولًا، ويعمل التطبيق دون إنترنت. عند تفعيل المزامنة تُحفظ نسخة في قاعدة بيانات Supabase خاصة بمالك الدفتر، في أوروبا، محميّة بسياسات صفوف تمنع أي مستخدم آخر من قراءة دفترك.</p></section>
+<section><h2>من يرى ماذا</h2>
+<p>مالك الدفتر يرى دفتره كاملًا. الشخص الذي تدعوه يرى <strong>القيود التي بينك وبينه فقط</strong>: ما سلّمته له، ومشترياته، وما بينكما من دَين، والرصيد الصافي. لا يرى بقية حساباتك ولا عملياتك ولا أي شخص آخر. هذا مفروض على الخادم نفسه، لا بإخفاء أزرار.</p></section>
+<section><h2>مشاركة البيانات</h2>
+<p>لا تُباع بياناتك ولا تُشارك مع معلنين ولا وسطاء بيانات. مزوّد الاستضافة والقاعدة هو Supabase، وواجهة التطبيق تُقدَّم عبر GitHub Pages، والخطوط من Google Fonts.</p></section>
+<section><h2>حقوقك</h2>
+<p>تستطيع تصدير بياناتك كاملة في أي وقت من «المزيد ← الاستيراد والتصدير ← نسخة احتياطية كاملة»، ومسحها من الجهاز من «الإعدادات ← مسح كل البيانات»، وحذف حسابك بالكامل عبر <a href="delete-account.html">صفحة حذف الحساب</a>.</p></section>
+<section><h2>الأطفال</h2>
+<p>رصيدو ليس موجّهًا لمن هم دون ١٣ سنة، ولا يجمع بيانات منهم عن قصد.</p></section>
+<section><h2>التواصل</h2>
+<p>للاستفسار أو طلب حذف: <a href="mailto:elgharrafi96mohamed@gmail.com">elgharrafi96mohamed@gmail.com</a></p></section>
+</div>
+
+<div data-lang="tr" hidden>
+<h1>Gizlilik Politikası</h1>
+<p class="lead">Son güncelleme: 19 Eylül 2026</p>
+<section><h2>Raseedo neyi saklar</h2>
+<ul><li>İşlemlerin: tutar, para birimi, tarih, kategori, hesap, not ve eklediğin fiş görselleri.</li>
+<li>Hesapların, defterlerin, kategorilerin, bütçelerin ve birikim hedeflerin.</li>
+<li>Eklediğin kişiler — adlarını sen nasıl yazdıysan öyle — ve aranızdaki kayıtlar.</li>
+<li>Arayüz dili, rakam biçimi, ana para birimi ve görünüm tercihi.</li></ul></section>
+<section><h2>Neyi saklamaz</h2>
+<ul><li>Parola yok: giriş cihaz kodu veya davet bağlantısıyla olur.</li>
+<li>Konum yok, rehber yok, galerinden görsel yok — yalnızca bir kayda kendin eklersen.</li>
+<li>Reklam kimliği yok, izleme yok, reklam yok.</li></ul></section>
+<section><h2>Nerede saklanır</h2>
+<p>Önce cihazında; uygulama çevrimdışı çalışır. Eşitleme açıkken defter sahibinin kendi Supabase veritabanında (Avrupa) bir kopya tutulur ve satır düzeyi güvenlik politikaları başka hiçbir kullanıcının defterini okumasına izin vermez.</p></section>
+<section><h2>Kim neyi görür</h2>
+<p>Defter sahibi kendi defterinin tamamını görür. Davet ettiğin kişi <strong>yalnızca aranızdaki kayıtları</strong> görür: ona teslim ettiklerin, alışverişleri, aranızdaki borç ve net bakiye. Diğer hesaplarını, işlemlerini ve başka kişileri göremez. Bu, düğme gizleyerek değil, sunucunun kendisinde uygulanır.</p></section>
+<section><h2>Veri paylaşımı</h2>
+<p>Verilerin satılmaz, reklamcılarla veya veri simsarlarıyla paylaşılmaz. Barındırma ve veritabanı Supabase, arayüz GitHub Pages, yazı tipleri Google Fonts üzerindendir.</p></section>
+<section><h2>Haklarin</h2>
+<p>Verilerini istediğin an «Daha fazla → İçe/dışa aktarma → Tam yedek»ten dışa aktarabilir, «Ayarlar → Tüm verileri sil»den cihazdan silebilir, hesabını <a href="delete-account.html">hesap silme sayfasından</a> tamamen kaldırabilirsin.</p></section>
+<section><h2>Çocuklar</h2><p>Raseedo 13 yaş altına yönelik değildir ve onlardan bilerek veri toplamaz.</p></section>
+<section><h2>İletişim</h2><p><a href="mailto:elgharrafi96mohamed@gmail.com">elgharrafi96mohamed@gmail.com</a></p></section>
+</div>
+
+<div data-lang="en" hidden>
+<h1>Privacy Policy</h1>
+<p class="lead">Last updated: 19 September 2026</p>
+<section><h2>What Raseedo stores</h2>
+<ul><li>Your entries: amount, currency, date, category, account, note, and any receipt images you attach.</li>
+<li>Your accounts, books, categories, budgets and savings goals.</li>
+<li>People you add, under the names you type, and the entries between you and them.</li>
+<li>Interface language, numeral style, base currency and appearance.</li></ul></section>
+<section><h2>What it does not store</h2>
+<ul><li>No password: you sign in with a device code or an invite link.</li>
+<li>No location, no contacts, no photos from your gallery unless you attach one to an entry yourself.</li>
+<li>No advertising identifier, no tracking, no ads.</li></ul></section>
+<section><h2>Where it is stored</h2>
+<p>On your device first; the app works offline. With sync on, a copy lives in the book owner's own Supabase database in Europe, protected by row-level security policies that stop any other user from reading your book.</p></section>
+<section><h2>Who sees what</h2>
+<p>The book owner sees their whole book. A person you invite sees <strong>only the entries between the two of you</strong>: what you handed them, their purchases, any debt between you, and the net balance. They never see your other accounts, your other entries, or any other person. This is enforced on the server, not by hiding buttons.</p></section>
+<section><h2>Sharing</h2>
+<p>Your data is never sold or shared with advertisers or data brokers. Hosting and database: Supabase. Front end: GitHub Pages. Fonts: Google Fonts.</p></section>
+<section><h2>Your rights</h2>
+<p>Export everything any time from More → Import &amp; export → Full backup, erase it from the device under Settings → Erase all data, and delete your account entirely via the <a href="delete-account.html">account deletion page</a>.</p></section>
+<section><h2>Children</h2><p>Raseedo is not directed at children under 13 and does not knowingly collect data from them.</p></section>
+<section><h2>Contact</h2><p><a href="mailto:elgharrafi96mohamed@gmail.com">elgharrafi96mohamed@gmail.com</a></p></section>
+</div>
+<p class="foot">Raseedo · رصيدو — <a href="index.html">فتح التطبيق / Uygulamayı aç / Open the app</a></p>
+</div>
+<script>
+(function(){
+  var btns = document.querySelectorAll('.langs button');
+  function set(l){
+    document.documentElement.lang = l;
+    document.documentElement.dir = (l === 'ar') ? 'rtl' : 'ltr';
+    document.querySelectorAll('[data-lang]').forEach(function(n){ n.hidden = (n.dataset.lang !== l); });
+    btns.forEach(function(b){ b.setAttribute('aria-pressed', String(b.dataset.l === l)); });
+    try { localStorage.setItem('raseedo.legal.lang', l); } catch(e){}
+  }
+  btns.forEach(function(b){ b.addEventListener('click', function(){ set(b.dataset.l); }); });
+  var saved = null; try { saved = localStorage.getItem('raseedo.legal.lang'); } catch(e){}
+  set(saved || 'ar');
+})();
+</script>
+</body>
+</html>

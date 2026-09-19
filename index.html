@@ -484,6 +484,26 @@ td.num,th.num{ text-align:end; font-variant-numeric:tabular-nums; direction:ltr;
       history:'سجلك', empty:'لا حركات بعد.',
       welcome:'مرحبًا {name}', joinErr:'رابط الدعوة غير صالح أو أُلغي.'
     },
+    ledger:{
+      title:'الدفتر بينكما', net:'الرصيد بينكما',
+      owedToOther:'لـ{other} عندك {amount}', owedToYou:'لك عند {other} {amount}',
+      settled:'لا شيء بينكما', perCurrency:'رصيد مستقل لكل عملة — لا تُجمع.',
+      iTook:'أخذتُ منه', iTookFrom:'أخذتُ من {other}', iRepaid:'سدّدتُ له',
+      gaveHim:'أعطيتُه', settle:'تصافينا',
+      settleBody:'سيُسجَّل قيد تسوية يُصفّر الرصيد. لا يُحذف شيء من التاريخ.',
+      reverse:'إلغاء بقيد عكسي', reverseBody:'لا يُمحى السطر — يُسجَّل قيد يعاكسه ويراه الطرفان.',
+      reverseReason:'سبب الإلغاء', reversed:'أُلغي بقيد عكسي', isReversal:'قيد عكسي',
+      needsConfirm:'بانتظار تأكيد الطرف الآخر', confirm:'أؤكّد', confirmed:'مؤكَّد',
+      confirmMode:'اشتراط تأكيد الطرف الآخر', confirmModeOn:'مفعّل', confirmModeOff:'معطّل',
+      confirmModeHelp:'حين يُفعَّل، لا يُحتسب القيد في الرصيد حتى يؤكّده الطرف الآخر.',
+      by:'سجّله {name}', unlink:'فكّ الارتباط',
+      unlinkBody:'يتوقّف تسجيله الجديد، ويبقى التاريخ للطرفين للقراءة.',
+      unlinked:'الارتباط مفكوك — للقراءة فقط',
+      types:{ handover:'سلّمتَ', purchase:'اشترى', return:'أعاد', borrow:'أخذتَ منه',
+              repay:'سدّدتَ', settle:'تسوية', reversal:'إلغاء قيد' },
+      guestTypes:{ handover:'استلمتَ', purchase:'اشتريتَ', return:'أعدتَ', borrow:'أعطيتَه',
+              repay:'استلمتَ سدادًا', settle:'تسوية', reversal:'إلغاء قيد' }
+    },
     common:{
       cancel:'إلغاء', save:'حفظ', close:'إغلاق', confirm:'تأكيد', back:'رجوع', add:'إضافة',
       today:'اليوم', yesterday:'أمس', all:'الكل', none:'لا شيء', total:'المجموع', remaining:'المتبقي',
@@ -610,6 +630,26 @@ td.num,th.num{ text-align:end; font-variant-numeric:tabular-nums; direction:ltr;
       history:'Geçmişin', empty:'Henüz hareket yok.',
       welcome:'Merhaba {name}', joinErr:'Davet bağlantısı geçersiz ya da iptal edilmiş.'
     },
+    ledger:{
+      title:'Aranızdaki defter', net:'Aranızdaki bakiye',
+      owedToOther:'{other}\u2019a borcun: {amount}', owedToYou:'{other} sana borçlu: {amount}',
+      settled:'Aranızda bir şey yok', perCurrency:'Her para birimi ayrı — toplanmaz.',
+      iTook:'Ondan aldım', iTookFrom:'{other} kişisinden aldım', iRepaid:'Ona ödedim',
+      gaveHim:'Ona verdim', settle:'Hesabı kapattık',
+      settleBody:'Bakiyeyi sıfırlayan bir kapanış kaydı yazılır. Geçmişten hiçbir şey silinmez.',
+      reverse:'Ters kayıtla iptal et', reverseBody:'Satır silinmez — onu tersleyen bir kayıt yazılır ve iki taraf da görür.',
+      reverseReason:'İptal sebebi', reversed:'Ters kayıtla iptal edildi', isReversal:'Ters kayıt',
+      needsConfirm:'Karşı tarafın onayı bekleniyor', confirm:'Onaylıyorum', confirmed:'Onaylı',
+      confirmMode:'Karşı tarafın onayını şart koş', confirmModeOn:'Açık', confirmModeOff:'Kapalı',
+      confirmModeHelp:'Açıkken kayıt, karşı taraf onaylayana dek bakiyeye girmez.',
+      by:'{name} kaydetti', unlink:'Bağlantıyı kaldır',
+      unlinkBody:'Yeni kayıt girişi durur; geçmiş iki tarafta da okunabilir kalır.',
+      unlinked:'Bağlantı kaldırıldı — yalnızca okuma',
+      types:{ handover:'Teslim ettin', purchase:'Aldı', return:'İade etti', borrow:'Ondan aldın',
+              repay:'Ödedin', settle:'Kapanış', reversal:'İptal kaydı' },
+      guestTypes:{ handover:'Teslim aldın', purchase:'Aldın', return:'İade ettin', borrow:'Ona verdin',
+              repay:'Ödeme aldın', settle:'Kapanış', reversal:'İptal kaydı' }
+    },
     common:{
       cancel:'Vazgeç', save:'Kaydet', close:'Kapat', confirm:'Onayla', back:'Geri', add:'Ekle',
       today:'Bugün', yesterday:'Dün', all:'Tümü', none:'Yok', total:'Toplam', remaining:'Kalan',
@@ -735,6 +775,26 @@ td.num,th.num{ text-align:end; font-variant-numeric:tabular-nums; direction:ltr;
       tooMuch:'That is more than you hold ({left}).', saved:'Purchase saved',
       history:'Your history', empty:'No activity yet.',
       welcome:'Welcome {name}', joinErr:'That invite link is invalid or was revoked.'
+    },
+    ledger:{
+      title:'Your shared ledger', net:'Balance between you',
+      owedToOther:'You owe {other} {amount}', owedToYou:'{other} owes you {amount}',
+      settled:'Nothing between you', perCurrency:'Each currency stands alone — never added together.',
+      iTook:'I took from them', iTookFrom:'I took from {other}', iRepaid:'I paid them back',
+      gaveHim:'I gave them', settle:'Settle up',
+      settleBody:'A settling entry is written that zeroes the balance. Nothing is removed from the history.',
+      reverse:'Cancel with a counter-entry', reverseBody:'The line is not erased — a counter-entry is written and both of you see it.',
+      reverseReason:'Reason for cancelling', reversed:'Cancelled by a counter-entry', isReversal:'Counter-entry',
+      needsConfirm:'Waiting for the other side to confirm', confirm:'I confirm', confirmed:'Confirmed',
+      confirmMode:'Require the other side to confirm', confirmModeOn:'On', confirmModeOff:'Off',
+      confirmModeHelp:'While on, an entry does not count toward the balance until the other side confirms it.',
+      by:'Recorded by {name}', unlink:'Unlink',
+      unlinkBody:'New entries stop; the history stays readable for both of you.',
+      unlinked:'Unlinked — read only',
+      types:{ handover:'You handed over', purchase:'They bought', return:'They returned', borrow:'You took from them',
+              repay:'You paid back', settle:'Settlement', reversal:'Counter-entry' },
+      guestTypes:{ handover:'You received', purchase:'You bought', return:'You returned', borrow:'You gave them',
+              repay:'You received a repayment', settle:'Settlement', reversal:'Counter-entry' }
     },
     common:{
       cancel:'Cancel', save:'Save', close:'Close', confirm:'Confirm', back:'Back', add:'Add',
@@ -894,29 +954,75 @@ td.num,th.num{ text-align:end; font-variant-numeric:tabular-nums; direction:ltr;
     return sum;
   }
 
-  /* ---------- رصيد الشخص ---------- */
+  /* ---------- الدفتر الثنائي: الرصيد يُشتَقّ ولا يُخزَّن ----------
+     holding = ما يحمله هو من مالي   (تسليم − شراء − إرجاع − تسوية/holding)
+     debt    = ما أخذته أنا منه      (أخذتُ − سدّدتُ − تسوية/debt)
+     net     = debt − holding        (موجب: لـه عندي · سالب: لي عنده)
+     القيد لا يُحتسب إن أُلغي بقيد عكسي، ولا إن كان التأكيد مشترطًا ولم يُؤكَّد.  */
+  function entryCounts(e, requireConfirm){
+    if (e.deleted) return false;
+    if (e.reversedByEntryId || e.reversed_by_entry_id) return false;
+    if (e.type === 'reversal') return false;
+    if (requireConfirm && !(e.confirmedAt || e.confirmed_at)) return false;
+    return true;
+  }
   function personLedger(personId){
+    const person = byId(db.people, personId) || {};
+    const req = !!person.requireConfirmation;
     const rows = db.personTransactions
       .filter(p => p.personId === personId)
       .sort((a,b) => Date.parse(a.occurredAt) - Date.parse(b.occurredAt));
-    let handed = 0, spent = 0, returned = 0;
     const byCur = {};
-    for (const p of rows){
-      const c = p.currency;
-      byCur[c] = byCur[c] || { handed:0, spent:0, returned:0 };
-      if (p.type === 'handover'){ handed += toBase(p.amountMinor,c,p.fx); byCur[c].handed += p.amountMinor; }
-      else if (p.type === 'purchase'){ spent += toBase(p.amountMinor,c,p.fx); byCur[c].spent += p.amountMinor; }
-      else if (p.type === 'return'){ returned += toBase(p.amountMinor,c,p.fx); byCur[c].returned += p.amountMinor; }
+    const cur = c => (byCur[c] = byCur[c] || { handed:0, spent:0, returned:0, taken:0, repaid:0,
+                                               settledHolding:0, settledDebt:0 });
+    let handed = 0, spent = 0, returned = 0, taken = 0, repaid = 0, pending = 0;
+    rows.forEach(p => {
+      const c = p.currency, k = cur(c), a = p.amountMinor || 0;
+      if (!entryCounts(p, req)){ if (req && !p.confirmedAt && p.type !== 'reversal') pending++; return; }
+      const axis = p.settleAxis || p.settle_axis;
+      if (p.type === 'handover'){ k.handed += a;  handed  += toBase(a,c,p.fx); }
+      else if (p.type === 'purchase'){ k.spent += a;   spent   += toBase(a,c,p.fx); }
+      else if (p.type === 'return'){ k.returned += a;  returned+= toBase(a,c,p.fx); }
+      else if (p.type === 'borrow'){ k.taken += a;     taken   += toBase(a,c,p.fx); }
+      else if (p.type === 'repay'){ k.repaid += a;     repaid  += toBase(a,c,p.fx); }
+      else if (p.type === 'settle'){
+        if (axis === 'debt') k.settledDebt += a; else k.settledHolding += a;
+      }
+    });
+    const holdingByCur = {}, debtByCur = {}, netByCur = {};
+    for (const c in byCur){
+      const k = byCur[c];
+      holdingByCur[c] = k.handed - k.spent - k.returned - k.settledHolding;
+      debtByCur[c]    = k.taken - k.repaid - k.settledDebt;
+      netByCur[c]     = debtByCur[c] - holdingByCur[c];
     }
-    const holdingByCur = {};
-    for (const c in byCur) holdingByCur[c] = byCur[c].handed - byCur[c].spent - byCur[c].returned;
-    return { rows, handed, spent, returned, holding: handed - spent - returned, byCur, holdingByCur };
+    const holding = handed - spent - returned;
+    const debt = taken - repaid;
+    return { rows, handed, spent, returned, taken, repaid, pending,
+             holding, debt, net: debt - holding,
+             byCur, holdingByCur, debtByCur, netByCur,
+             currencies: Object.keys(netByCur).sort(),
+             requireConfirm: req };
   }
   function heldByOthersBase(){
     return db.people.filter(p => !p.archived)
       .reduce((s,p) => s + Math.max(0, personLedger(p.id).holding), 0);
   }
-
+  /* القيد العكسي محليًا: لا حذف، بل قيد يعاكسه */
+  function reverseLocal(entryId, reason){
+    const e = db.personTransactions.find(x => x.id === entryId);
+    if (!e || e.reversedByEntryId || e.type === 'reversal') return null;
+    const nid = uid('ptx');
+    const rev = Object.assign({}, e, { id:nid, type:'reversal', reversesEntryId:e.id,
+      reason: reason || null, occurredAt:new Date().toISOString(),
+      createdAt:new Date().toISOString(), updatedAt:new Date().toISOString(),
+      confirmedAt:null, reversedByEntryId:null, source:{ app:'raseedo' } });
+    db.personTransactions.push(rev);
+    e.reversedByEntryId = nid; e.updatedAt = new Date().toISOString();
+    audit('reverse','personTransaction',e.id,{ reversal:nid, reason:reason||null });
+    persist(); emit();
+    return rev;
+  }
   /* ---------- الفترات والمجاميع ---------- */
   function monthRange(d){
     const x = d ? new Date(d) : new Date();
@@ -1162,7 +1268,7 @@ td.num,th.num{ text-align:end; font-variant-numeric:tabular-nums; direction:ltr;
     monthRange, spendingEntries, incomeEntries, spentBetween, incomeBetween,
     budgetStatus, budgetLeftTotal,
     addTx, updateTx, removeTx, restoreTx,
-    addPerson, addPersonTx, removePersonTx,
+    addPerson, addPersonTx, removePersonTx, reverseLocal, entryCounts,
     addAccount, addCategory, addBudget, removeBudget, setSettings,
     importBackup, classifyRows, commitRows, counts, health, audit
   };
@@ -1518,6 +1624,20 @@ td.num,th.num{ text-align:end; font-variant-numeric:tabular-nums; direction:ltr;
   const personAddPurchase = (amountMinor, currency, note, categoryId, occurredAt) =>
         rpc('my_person_add_purchase', { p_amount:amountMinor, p_currency:currency, p_note:note,
                                         p_category:categoryId || null, p_occurred:occurredAt });
+  const personAddEntry  = (type, amountMinor, currency, note, categoryId, occurredAt) =>
+        rpc('my_person_add_entry', { p_type:type, p_amount:amountMinor, p_currency:currency,
+                                     p_note:note, p_category:categoryId || null, p_occurred:occurredAt });
+  const reverseEntry    = (entryId, reason) =>
+        rpc('reverse_person_entry', { p_entry_id:entryId, p_reason:reason || null });
+  const confirmEntry    = (entryId) => rpc('confirm_person_entry', { p_entry_id:entryId });
+  const settlePerson    = (personId, currency) =>
+        rpc('settle_person', { p_household:meta.householdId, p_person:personId, p_currency:currency });
+  const setConfirmation = (personId, req) =>
+        rpc('set_person_confirmation', { p_household:meta.householdId, p_person:personId, p_require:!!req });
+  const unlinkPerson    = (personId) =>
+        rpc('unlink_person', { p_household:meta.householdId, p_person:personId });
+  const personBalances  = (personId) =>
+        rpc('person_balances', { h:meta.householdId, p:personId });
 
   /* ---------- الترحيل الأول ---------- */
   async function pushEverything(){
@@ -1566,6 +1686,7 @@ td.num,th.num{ text-align:end; font-variant-numeric:tabular-nums; direction:ltr;
     const people = (S.db.people || []).filter(r => localUpdatedAt(r) > since).map(p => ({
       household_id:meta.householdId, id:p.id, name:p.name, locale:p.locale || 'ar',
       color:p.color || null, archived:!!p.archived,
+      require_confirmation: !!p.requireConfirmation,
       updated_at:new Date(localUpdatedAt(p) || Date.now()).toISOString(), deleted:false }));
     const pes = (S.db.personTransactions || []).filter(r => localUpdatedAt(r) > since).map(e => ({
       household_id:meta.householdId, id:e.id, person_id:e.personId, type:e.type,
@@ -1574,6 +1695,11 @@ td.num,th.num{ text-align:end; font-variant-numeric:tabular-nums; direction:ltr;
       note: (typeof e.note === 'string' ? e.note : (e.note ? JSON.stringify(e.note) : null)),
       attachments:e.attachments || [],
       occurred_at:e.occurredAt,
+      reverses_entry_id: e.reversesEntryId || null,
+      reversed_by_entry_id: e.reversedByEntryId || null,
+      settle_axis: e.settleAxis || null,
+      reason: e.reason || null,
+      confirmed_at: e.confirmedAt || null,
       updated_at:new Date(localUpdatedAt(e) || Date.now()).toISOString(), deleted:false }));
 
     state.pending = rows.length + people.length + pes.length; emit();
@@ -1626,7 +1752,9 @@ td.num,th.num{ text-align:end; font-variant-numeric:tabular-nums; direction:ltr;
     (ppl || []).forEach(r => {
       const arr = S.db.people; const i = arr.findIndex(x => x.id === r.id);
       const remote = { id:r.id, name:r.name, locale:r.locale, color:r.color,
-                       archived:r.archived, updatedAt:r.updated_at };
+                       archived:r.archived, updatedAt:r.updated_at,
+                       requireConfirmation: !!r.require_confirmation,
+                       unlinkedAt: r.unlinked_at || null };
       if (i < 0){ arr.push(remote); n++; }
       else if (Date.parse(r.updated_at) > localUpdatedAt(arr[i])){ arr[i] = Object.assign(arr[i], remote); n++; }
     });
@@ -1636,6 +1764,11 @@ td.num,th.num{ text-align:end; font-variant-numeric:tabular-nums; direction:ltr;
                        amountMinor:Number(r.amount_minor), accountId:r.account_id,
                        categoryId:r.category_id, note:r.note, attachments:r.attachments || [],
                        occurredAt:r.occurred_at, updatedAt:r.updated_at, status:'posted',
+                       reversesEntryId:r.reverses_entry_id || null,
+                       reversedByEntryId:r.reversed_by_entry_id || null,
+                       settleAxis:r.settle_axis || null, reason:r.reason || null,
+                       confirmedAt:r.confirmed_at || null, createdBy:r.created_by || null,
+                       createdByName:r.created_by_name || null,
                        source:{ app:'cloud' } };
       if (r.deleted){ if (i >= 0){ arr.splice(i,1); n++; } return; }
       if (i < 0){ arr.push(remote); n++; }
@@ -1681,7 +1814,8 @@ td.num,th.num{ text-align:end; font-variant-numeric:tabular-nums; direction:ltr;
     subscribe(f){ listeners.add(f); return () => listeners.delete(f); },
     ensureSession, detectRole, claimOwnerDevice, claimPerson,
     createDeviceCode, recoveryCode, createInvite, revokeInvite,
-    personView, personAddPurchase,
+    personView, personAddPurchase, personAddEntry, reverseEntry, confirmEntry,
+    settlePerson, setConfirmation, unlinkPerson, personBalances,
     pushEverything, pushChanges, pullChanges, sync, rpc,
     signOut(){ session = null; meta = { householdId:null, role:null, personId:null,
       lastPull:null, lastPush:null }; save(); emit(); }
@@ -1825,7 +1959,7 @@ window.RASEEDO_DEMO={"schema":"raseedo.backup/1","generatedAt":"2026-09-19T00:00
   }
   function entryTone(t){
     if (t.type === 'income' || t.type === 'return' || t.type === 'borrow') return 'in';
-    if (t.type === 'expense' || t.type === 'purchase') return 'out';
+    if (t.type === 'expense' || t.type === 'purchase' || t.type === 'repay') return 'out';
     return 'tr';
   }
   function entryTitle(e){
@@ -1833,8 +1967,7 @@ window.RASEEDO_DEMO={"schema":"raseedo.backup/1","generatedAt":"2026-09-19T00:00
     if (e.kind === 'person'){
       const p = perOf(t.personId);
       const who = p ? p.name : (t.personName || '');
-      const verb = { handover:T('people.handover'), purchase:T('people.purchase'),
-                     return:T('people.return'), borrow:T('people.handover'), repay:T('people.return') }[t.type] || t.type;
+      const verb = T('ledger.types.' + t.type) || t.type;
       return verb + ' · ' + who;
     }
     if (t.type === 'transfer'){
@@ -1918,6 +2051,10 @@ window.RASEEDO_DEMO={"schema":"raseedo.backup/1","generatedAt":"2026-09-19T00:00
   }
   function openEntry(e){
     const t = e.t;
+    if (e.kind === 'person'){
+      const per = perOf(t.personId);
+      if (per) return ledgerEntrySheet(per, t);
+    }
     U.sheet(entryTitle(e), U.dateLong(t.occurredAt) + ' · ' + U.timeShort(t.occurredAt), (b, close) => {
       const dl = el('dl', { class:'kv' });
       const add = (k, node) => { dl.appendChild(el('dt', { text:k })); dl.appendChild(el('dd', {}, [node])); };
@@ -2068,23 +2205,59 @@ window.RASEEDO_DEMO={"schema":"raseedo.backup/1","generatedAt":"2026-09-19T00:00
   }
 
   /* ================= الأشخاص ================= */
+  /* ---------- صياغة الرصيد بالكلمات، لا بالإشارة ---------- */
+  function netWords(otherName, netMinor, currency){
+    if (!netMinor) return { text:T('ledger.settled'), tone:'ghost', amount:null };
+    const amount = U.money(Math.abs(netMinor), currency);
+    if (netMinor > 0) return { text:T('ledger.owedToOther', { other:otherName, amount }),
+                               tone:'out', amount, dir:'owe' };
+    return { text:T('ledger.owedToYou', { other:otherName, amount }), tone:'in', amount, dir:'owed' };
+  }
+  function netBlock(otherName, L){
+    const wrap = el('div', { class:'answers' });
+    const curs = L.currencies.length ? L.currencies : [base()];
+    curs.forEach((c, i) => {
+      const w = netWords(otherName, L.netByCur[c] || 0, c);
+      wrap.appendChild(el('div', { class:'lead', style: i ? { borderTop:'1px solid var(--border)' } : null }, [
+        el('div', { class:'k', text: T('ledger.net') + (curs.length > 1 ? ' · ' + c : '') }),
+        el('div', { style:{ fontSize:'19px', fontWeight:'750', marginTop:'4px',
+          color: w.tone === 'out' ? 'var(--expense)' : w.tone === 'in' ? 'var(--income)' : 'var(--muted)' },
+          text:w.text }),
+        el('div', { class:'sub' }, [
+          document.createTextNode(T('people.withPerson') + ' '),
+          U.moneyEl(L.holdingByCur[c] || 0, c, 'amt-sm'),
+          document.createTextNode(' · ' + T('ledger.iTook') + ' '),
+          U.moneyEl(L.debtByCur[c] || 0, c, 'amt-sm')
+        ])
+      ]));
+    });
+    if (curs.length > 1) wrap.appendChild(el('div', { class:'lead', style:{ borderTop:'1px solid var(--border)' } },
+      [ el('div', { class:'sub', style:{margin:0}, text:T('ledger.perCurrency') }) ]));
+    return wrap;
+  }
+
+
   function personRow(p){
     const L = S.personLedger(p.id);
+    const mainCur = L.currencies[0] || base();
+    const w = netWords(p.name, L.netByCur[mainCur] || 0, mainCur);
     const pct = L.handed > 0 ? Math.max(0, Math.min(1, L.holding / L.handed)) : 0;
     return el('button', { class:'person', onclick:()=>go('person', p.id) }, [
       el('div', { class:'avatar', style:{ background: p.color || U.colorFor(p.name) },
                   text:U.initials(p.name) }),
       el('div', { class:'mid', style:{ flex:'1', minWidth:0 } }, [
-        el('div', { class:'t', text:p.name }),
+        el('div', { class:'t' }, [ document.createTextNode(p.name),
+          p.unlinkedAt ? el('span', { class:'chip chip--ghost', style:{marginInlineStart:'6px'},
+            text:T('ledger.unlinked') }) : null,
+          L.pending ? el('span', { class:'chip chip--warn', style:{marginInlineStart:'6px'},
+            text:U.digits(L.pending) }) : null ]),
         el('div', { class:'meter' }, [ el('i', { style:{ width:(pct*100)+'%' } }) ]),
-        el('div', { class:'s', style:{marginTop:'5px'} },
-          [ document.createTextNode(T('people.spentTotal') + ' '),
-            U.moneyEl(L.spent, base(), 'amt-sm'),
-            document.createTextNode(' · ' + T('people.handedTotal') + ' '),
-            U.moneyEl(L.handed, base(), 'amt-sm') ])
+        el('div', { class:'s', style:{ marginTop:'5px',
+          color: w.tone === 'out' ? 'var(--expense)' : w.tone === 'in' ? 'var(--income)' : 'var(--muted)' },
+          text:w.text })
       ]),
       el('div', { class:'end' }, [
-        U.moneyEl(L.holding, base(), 'amt-lg amt--tr'),
+        U.moneyEl(L.holdingByCur[mainCur] || 0, mainCur, 'amt-lg amt--tr'),
         el('div', { class:'s', text:T('people.withPerson') })
       ])
     ]);
@@ -2135,54 +2308,185 @@ window.RASEEDO_DEMO={"schema":"raseedo.backup/1","generatedAt":"2026-09-19T00:00
     const L = S.personLedger(id);
     v.appendChild(el('div', { class:'sec' }, [
       el('button', { class:'iconbtn', 'aria-label':T('common.back'), onclick:()=>go('people') }, [U.icon('back',18)]),
-      el('h2', { text:p.name })
+      el('h2', { text:p.name }),
+      p.unlinkedAt ? el('span', { class:'chip chip--ghost', text:T('ledger.unlinked') }) : null
     ]));
-    v.appendChild(el('div', { class:'answers' }, [
-      el('div', { class:'lead' }, [
-        el('div', { class:'k', text:T('people.withPerson') }),
-        U.moneyEl(L.holding, base(), 'amt-xl amt--tr'),
-        el('div', { class:'sub', text: L.holding === 0 ? T('people.zero') : T('people.purchaseHelp') })
-      ]),
-      el('div', { class:'grid' }, [
-        el('div', {}, [ el('div',{class:'k',text:T('people.handedTotal')}), U.moneyEl(L.handed, base(),'v') ]),
-        el('div', {}, [ el('div',{class:'k',text:T('people.spentTotal')}), U.moneyEl(L.spent, base(),'amt--out v') ]),
-        el('div', {}, [ el('div',{class:'k',text:T('people.returned')}), U.moneyEl(L.returned, base(),'amt--in v') ])
-      ])
-    ]));
-    v.appendChild(el('div', { class:'btnrow' }, [
-      el('button', { class:'btn btn--primary', onclick:()=>personEntrySheet(p,'handover') },
-        [U.icon('hand',17), document.createTextNode(T('people.handover'))]),
-      el('button', { class:'btn', onclick:()=>personEntrySheet(p,'purchase') },
-        [U.icon('bag',17), document.createTextNode(T('people.purchase'))]),
-      el('button', { class:'btn', onclick:()=>personEntrySheet(p,'return') },
-        [U.icon('upload',17), document.createTextNode(T('people.return'))]),
-      L.holding > 0 ? el('button', { class:'btn', text:T('people.settle'), onclick:()=>{
-        U.confirmSheet(T('people.settleTitle'),
-          T('people.settleBody', { amount:U.money(L.holding, base()) }), T('people.settle'), ()=>{
-            S.addPersonTx({ type:'return', personId:p.id, currency:base(), amountMinor:L.holding,
-                            accountId:(S.db.accounts[0]||{}).id || null, occurredAt:new Date().toISOString() });
-            U.toast(T('people.nothingLeft')); render();
-          });
-      }}) : null
-    ]));
-    if (p.inviteState !== 'accepted'){
-      v.appendChild(el('div', { class:'list' }, [
-        el('button', { class:'row', onclick:()=>inviteSheet(p) }, [
-          el('div', { class:'ico', style:{background:'var(--apricot)'} }, [U.icon('person',17)]),
-          el('div', { class:'mid' }, [ el('div',{class:'t',text:T('people.invite')}),
-            el('div',{class:'s',text: p.inviteState==='invited' ? T('people.inviteSent') : T('people.inviteNone')}) ]),
-          U.icon('chevron',16)
-        ])
+    v.appendChild(netBlock(p.name, L));
+    if (L.pending) v.appendChild(el('div', { class:'warnbox',
+      text: T('ledger.needsConfirm') + ' · ' + U.digits(L.pending) }));
+
+    const canWrite = !p.unlinkedAt;
+    if (canWrite){
+      v.appendChild(el('div', { class:'btnrow' }, [
+        el('button', { class:'btn btn--primary', onclick:()=>personEntrySheet(p,'handover') },
+          [U.icon('hand',17), document.createTextNode(T('people.handover'))]),
+        el('button', { class:'btn', onclick:()=>personEntrySheet(p,'purchase') },
+          [U.icon('bag',17), document.createTextNode(T('people.purchase'))]),
+        el('button', { class:'btn', onclick:()=>personEntrySheet(p,'return') },
+          [U.icon('upload',17), document.createTextNode(T('people.return'))]),
+        el('button', { class:'btn', onclick:()=>personEntrySheet(p,'borrow') },
+          [U.icon('download',17), document.createTextNode(T('ledger.iTook'))]),
+        el('button', { class:'btn', onclick:()=>personEntrySheet(p,'repay') },
+          [U.icon('wallet',17), document.createTextNode(T('ledger.iRepaid'))]),
+        (L.currencies.length ? el('button', { class:'btn', text:T('ledger.settle'),
+          onclick:()=>settleSheet(p, L) }) : null)
       ]));
     }
-    v.appendChild(sectionHead(T('people.history')));
+
+    /* وضع التأكيد + فكّ الارتباط */
+    const opts = el('div', { class:'list' });
+    opts.appendChild(el('button', { class:'row', onclick:()=>{
+      const next = !p.requireConfirmation;
+      const apply = () => { p.requireConfirmation = next; p.updatedAt = new Date().toISOString();
+        S.persist(); render(); };
+      if (w.Cloud && w.Cloud.configured() && w.Cloud.meta.role === 'owner')
+        w.Cloud.setConfirmation(p.id, next).then(apply).catch(e => U.toast(String(e.message||e)));
+      else apply();
+    }}, [
+      el('div', { class:'ico', style:{ background: p.requireConfirmation ? 'var(--income)' : 'var(--surface-sunk)',
+        color: p.requireConfirmation ? '#fff' : 'var(--muted)' } }, [U.icon('check',16)]),
+      el('div', { class:'mid' }, [ el('div', { class:'t', text:T('ledger.confirmMode') }),
+        el('div', { class:'s', text:T('ledger.confirmModeHelp') }) ]),
+      el('span', { class:'chip ' + (p.requireConfirmation ? 'chip--in' : 'chip--ghost'),
+        text: p.requireConfirmation ? T('ledger.confirmModeOn') : T('ledger.confirmModeOff') })
+    ]));
+    if (p.inviteState !== 'accepted' && !p.unlinkedAt){
+      opts.appendChild(el('button', { class:'row', onclick:()=>inviteSheet(p) }, [
+        el('div', { class:'ico', style:{background:'var(--apricot)'} }, [U.icon('person',17)]),
+        el('div', { class:'mid' }, [ el('div',{class:'t',text:T('people.invite')}),
+          el('div',{class:'s',text: p.inviteState==='invited' ? T('cloud.inviteSent') : T('cloud.inviteNone')}) ]),
+        U.icon('chevron',16)
+      ]));
+    }
+    if (!p.unlinkedAt && p.inviteState === 'accepted'){
+      opts.appendChild(el('button', { class:'row', onclick:()=>{
+        U.confirmSheet(T('ledger.unlink'), T('ledger.unlinkBody'), T('ledger.unlink'), ()=>{
+          const apply = () => { p.unlinkedAt = new Date().toISOString(); p.inviteState = 'none';
+            p.updatedAt = new Date().toISOString(); S.persist(); render(); };
+          if (w.Cloud && w.Cloud.configured() && w.Cloud.meta.role === 'owner')
+            w.Cloud.unlinkPerson(p.id).then(apply).catch(e => U.toast(String(e.message||e)));
+          else apply();
+        }, true);
+      }}, [
+        el('div', { class:'ico', style:{background:'var(--surface-sunk)', color:'var(--expense)'} }, [U.icon('x',16)]),
+        el('div', { class:'mid' }, [ el('div', { class:'t', text:T('ledger.unlink') }) ])
+      ]));
+    }
+    v.appendChild(opts);
+
+    v.appendChild(sectionHead(T('people.history'), null, null, T('ledger.perCurrency')));
     if (!L.rows.length) v.appendChild(emptyBox(T('people.emptyHist'),'',null));
     else {
       const list = el('div', { class:'list' });
-      L.rows.slice().reverse().forEach(r => list.appendChild(entryRow({ kind:'person', t:r })));
+      L.rows.slice().reverse().forEach(r => list.appendChild(ledgerRow(p, r)));
       v.appendChild(list);
     }
     return v;
+  }
+  function ledgerRow(person, r){
+    const label = T('ledger.types.' + r.type) || r.type;
+    const reversed = !!r.reversedByEntryId;
+    const isRev = r.type === 'reversal';
+    const tone = (r.type === 'purchase' || r.type === 'repay') ? 'out'
+               : (r.type === 'return' || r.type === 'borrow') ? 'in' : 'tr';
+    const note = typeof r.note === 'string' ? r.note : S.localized(r.note, I.lang);
+    const who = r.createdByName || (r.createdBy && w.Cloud && w.Cloud.session &&
+                r.createdBy === w.Cloud.session.userId ? null : person.name);
+    const bits = [U.dateShort(r.occurredAt)];
+    if (note) bits.push(note);
+    if (who) bits.push(T('ledger.by', { name:who }));
+    if (r.reason) bits.push(r.reason);
+    return el('button', { class:'row', style: reversed ? { opacity:'.55' } : null,
+      onclick:()=>ledgerEntrySheet(person, r) }, [
+      el('div', { class:'ico', style:{ background: isRev ? 'var(--muted)'
+        : tone === 'out' ? 'var(--expense)' : tone === 'in' ? 'var(--income)' : 'var(--primary)' } },
+        [U.icon(isRev ? 'x' : r.type === 'purchase' ? 'bag' : r.type === 'borrow' ? 'download' : 'hand', 16)]),
+      el('div', { class:'mid' }, [
+        el('div', { class:'t' }, [ document.createTextNode(label),
+          reversed ? el('span', { class:'chip chip--ghost', style:{marginInlineStart:'6px'},
+            text:T('ledger.reversed') }) : null,
+          (!r.confirmedAt && person.requireConfirmation && !isRev)
+            ? el('span', { class:'chip chip--warn', style:{marginInlineStart:'6px'},
+                text:T('ledger.needsConfirm') }) : null ]),
+        el('div', { class:'s', text:bits.join(' · ') })
+      ]),
+      el('div', { class:'end' }, [
+        U.moneyEl(r.amountMinor, r.currency, 'amt-sm amt--' + tone,
+                  { plus: tone === 'in' })
+      ])
+    ]);
+  }
+  function ledgerEntrySheet(person, r){
+    const label = T('ledger.types.' + r.type) || r.type;
+    U.sheet(label + ' · ' + person.name,
+            U.dateLong(r.occurredAt) + ' · ' + U.timeShort(r.occurredAt), (b, close) => {
+      const dl = el('dl', { class:'kv' });
+      const add = (k, node) => { dl.appendChild(el('dt', { text:k })); dl.appendChild(el('dd', {}, [node])); };
+      add(T('add.amount'), U.moneyEl(r.amountMinor, r.currency, 'amt-lg'));
+      const note = typeof r.note === 'string' ? r.note : S.localized(r.note, I.lang);
+      if (note) add(T('add.note'), document.createTextNode(note));
+      if (r.createdByName) add(T('ledger.by', { name:'' }).replace('{name}','').trim() || '—',
+                               document.createTextNode(r.createdByName));
+      if (r.reason) add(T('ledger.reverseReason'), document.createTextNode(r.reason));
+      add(T('ledger.confirmed'), document.createTextNode(
+        r.confirmedAt ? U.dateShort(r.confirmedAt) : T('ledger.needsConfirm')));
+      b.appendChild(dl);
+      if (r.reversedByEntryId) b.appendChild(el('div', { class:'warnbox', text:T('ledger.reversed') }));
+      const row = el('div', { class:'btnrow' });
+      if (!r.reversedByEntryId && r.type !== 'reversal' && !person.unlinkedAt){
+        row.appendChild(el('button', { class:'btn btn--danger', text:T('ledger.reverse'), onclick:()=>{
+          close(); reverseSheet(person, r);
+        }}));
+      }
+      row.appendChild(el('button', { class:'btn', text:T('common.close'), onclick:close }));
+      b.appendChild(row);
+    });
+  }
+  function reverseSheet(person, r){
+    U.sheet(T('ledger.reverse'), T('ledger.reverseBody'), (b, close) => {
+      const why = el('input', { class:'ctl', id:'rev-why', placeholder:T('ledger.reverseReason') });
+      b.appendChild(el('div', { class:'field' }, [
+        el('label', { for:'rev-why', text:T('ledger.reverseReason') }), why ]));
+      b.appendChild(el('button', { class:'btn btn--primary btn--wide', text:T('ledger.reverse'),
+        style:{ background:'var(--expense)' }, onclick:()=>{
+        const reason = why.value.trim() || null;
+        const local = () => { S.reverseLocal(r.id, reason); close(); render(); };
+        if (w.Cloud && w.Cloud.configured() && w.Cloud.meta.role === 'owner'){
+          w.Cloud.reverseEntry(r.id, reason)
+            .then(()=> w.Cloud.pullChanges()).then(()=>{ close(); render(); })
+            .catch(()=> local());
+        } else local();
+      }}));
+      b.appendChild(el('button', { class:'btn btn--wide', text:T('common.cancel'), onclick:close }));
+    });
+  }
+  function settleSheet(person, L){
+    U.sheet(T('ledger.settle') + ' · ' + person.name, T('ledger.settleBody'), (b, close) => {
+      L.currencies.forEach(c => {
+        const w2 = netWords(person.name, L.netByCur[c] || 0, c);
+        b.appendChild(el('div', { class:'list', style:{padding:'12px 14px'} }, [
+          el('div', { class:'t', text: c + ' — ' + w2.text }) ]));
+        b.appendChild(el('button', { class:'btn btn--primary btn--wide',
+          text:T('ledger.settle') + ' · ' + c, onclick:()=>{
+            const local = () => {
+              const h = L.holdingByCur[c] || 0, d = L.debtByCur[c] || 0;
+              if (h) S.addPersonTx({ type:'settle', personId:person.id, currency:c,
+                amountMinor:Math.abs(h), settleAxis:'holding', reason:T('ledger.settle'),
+                confirmedAt:new Date().toISOString(), occurredAt:new Date().toISOString() });
+              if (d) S.addPersonTx({ type:'settle', personId:person.id, currency:c,
+                amountMinor:Math.abs(d), settleAxis:'debt', reason:T('ledger.settle'),
+                confirmedAt:new Date().toISOString(), occurredAt:new Date().toISOString() });
+              close(); U.toast(T('ledger.settled')); render();
+            };
+            if (w.Cloud && w.Cloud.configured() && w.Cloud.meta.role === 'owner')
+              w.Cloud.settlePerson(person.id, c).then(()=> w.Cloud.pullChanges())
+                .then(()=>{ close(); U.toast(T('ledger.settled')); render(); })
+                .catch(()=> local());
+            else local();
+          }}));
+      });
+      b.appendChild(el('button', { class:'btn btn--wide', text:T('common.cancel'), onclick:close }));
+    });
   }
   function inviteSheet(p){
     U.sheet(T('people.invite'), T('people.inviteHelp'), (b, close) => {
@@ -2222,9 +2526,12 @@ window.RASEEDO_DEMO={"schema":"raseedo.backup/1","generatedAt":"2026-09-19T00:00
   function personEntrySheet(p, type){
     const L = S.personLedger(p.id);
     const help = { handover:T('people.handoverHelp'), purchase:T('people.purchaseHelp'),
-                   return:T('people.returnHelp') }[type];
+                   return:T('people.returnHelp'),
+                   borrow:T('ledger.owedToOther', { other:p.name, amount:'…' }),
+                   repay:T('ledger.iRepaid') }[type];
     const title = { handover:T('people.handover'), purchase:T('people.purchase'),
-                    return:T('people.return') }[type];
+                    return:T('people.return'), borrow:T('ledger.iTookFrom', { other:p.name }),
+                    repay:T('ledger.iRepaid') }[type];
     U.sheet(title + ' · ' + p.name, help, (b, close) => {
       const amt = el('input', { class:'ctl keypad-amt', id:'pe-amt', inputmode:'decimal', placeholder:'0' });
       const cur = el('select', { class:'ctl', id:'pe-cur', style:{maxWidth:'130px'} },
@@ -2234,8 +2541,8 @@ window.RASEEDO_DEMO={"schema":"raseedo.backup/1","generatedAt":"2026-09-19T00:00
         el('div', { style:{display:'flex',gap:'9px',alignItems:'center'} }, [amt, cur]) ]));
       if (type !== 'purchase'){
         const acc = accSelect('pe-acc', (S.db.accounts[0]||{}).id, true);
-        b.appendChild(el('div', { class:'field' }, [
-          el('label', { for:'pe-acc', text: type==='handover' ? T('people.fromAccount') : T('people.toAccount') }), acc ]));
+        const lbl = (type === 'handover' || type === 'repay') ? T('people.fromAccount') : T('people.toAccount');
+        b.appendChild(el('div', { class:'field' }, [ el('label', { for:'pe-acc', text:lbl }), acc ]));
         b.__acc = acc;
       }
       let catSel = null;
@@ -2280,6 +2587,10 @@ window.RASEEDO_DEMO={"schema":"raseedo.backup/1","generatedAt":"2026-09-19T00:00
         }
         if (type === 'return' && minor > holdingInCur)
           return showErr(T('people.errReturnTooMuch', { left:U.money(holdingInCur, c) }));
+        if (type === 'repay'){
+          const owed = (L.debtByCur[c] != null) ? L.debtByCur[c] : L.debt;
+          if (minor > owed) return showErr(T('people.errReturnTooMuch', { left:U.money(owed, c) }));
+        }
         const when = new Date(dt.value + 'T12:00:00').toISOString();
         S.addPersonTx({
           type, personId:p.id, currency:c, amountMinor:minor, occurredAt:when,
@@ -2938,80 +3249,126 @@ window.RASEEDO_DEMO={"schema":"raseedo.backup/1","generatedAt":"2026-09-19T00:00
     U.offerFile('raseedo-backup.json', JSON.stringify(snap, null, 1), 'application/json');
   }
 
-  /* ================= وضع الضيف: ما لدى الشخص فقط ================= */
-  let guest = null;   // {personId, name, locale, baseCurrency, ownerName, entries[]}
+  /* ================= وضع الضيف: الدفتر بينكما، ولا شيء غيره ================= */
+  let guest = null;
 
-  function guestTotals(){
-    const by = {};
-    (guest.entries || []).forEach(e => {
-      const c = e.currency || guest.baseCurrency;
-      by[c] = by[c] || { handed:0, spent:0, returned:0 };
-      const a = Number(e.amountMinor) || 0;
-      if (e.type === 'handover') by[c].handed += a;
-      else if (e.type === 'purchase') by[c].spent += a;
-      else if (e.type === 'return') by[c].returned += a;
-    });
+  function guestBalances(){
     const out = {};
-    for (const c in by) out[c] = Object.assign({ holding: by[c].handed - by[c].spent - by[c].returned }, by[c]);
+    (guest.balances || []).forEach(b => { out[b.currency] = {
+      holding:Number(b.holding)||0, debt:Number(b.debt)||0, net:Number(b.net)||0 }; });
+    if (!Object.keys(out).length){
+      const agg = {};
+      (guest.entries || []).forEach(e => {
+        const c = e.currency || guest.baseCurrency, a = Number(e.amountMinor)||0;
+        agg[c] = agg[c] || { holding:0, debt:0, net:0 };
+        if (e.reversedBy || e.type === 'reversal') return;
+        if (guest.requireConfirmation && !e.confirmedAt) return;
+        if (e.type === 'handover') agg[c].holding += a;
+        else if (e.type === 'purchase' || e.type === 'return') agg[c].holding -= a;
+        else if (e.type === 'borrow') agg[c].debt += a;
+        else if (e.type === 'repay') agg[c].debt -= a;
+        else if (e.type === 'settle'){
+          if (e.settleAxis === 'debt') agg[c].debt -= a; else agg[c].holding -= a;
+        }
+      });
+      for (const c in agg){ agg[c].net = agg[c].debt - agg[c].holding; out[c] = agg[c]; }
+    }
     return out;
-  }
-  function guestMainCurrency(){
-    const t = guestTotals(); const keys = Object.keys(t);
-    if (!keys.length) return guest.baseCurrency;
-    return keys.sort((a,b) => t[b].handed - t[a].handed)[0];
   }
   function renderGuest(){
     const root = document.getElementById('app');
     root.textContent = '';
     root.appendChild(el('header', { class:'topbar' }, [
       el('div', { class:'brand' }, [ U.brandMark(),
-        el('div', {}, [ el('b', { text:I.t('appName') }), el('small', { text:T('guest.title') }) ]) ]),
+        el('div', {}, [ el('b', { text:I.t('appName') }), el('small', { text:T('ledger.title') }) ]) ]),
       el('div', { class:'spacer' }),
       el('button', { class:'iconbtn', 'aria-label':T('settings.language'), onclick:guestLangSheet },
         [ el('span', { style:{fontWeight:'800',fontSize:'12px'}, text:I.lang.toUpperCase() }) ])
     ]));
     const v = el('div', { class:'view' });
-    const t = guestTotals(), cur = guestMainCurrency(), tot = t[cur] || { handed:0, spent:0, returned:0, holding:0 };
-    v.appendChild(el('div', { class:'answers' }, [
-      el('div', { class:'lead' }, [
-        el('div', { class:'k', text:T('guest.holding') }),
-        U.moneyEl(tot.holding, cur, 'amt-xl amt--tr'),
-        el('div', { class:'sub', text:T('guest.subtitle', { owner: guest.ownerName || '' }) })
-      ]),
-      el('div', { class:'grid' }, [
-        el('div', {}, [ el('div',{class:'k',text:T('guest.handed')}), U.moneyEl(tot.handed, cur, 'v') ]),
-        el('div', {}, [ el('div',{class:'k',text:T('guest.spent')}), U.moneyEl(tot.spent, cur, 'amt--out v') ]),
-        el('div', {}, [ el('div',{class:'k',text:T('people.returned')}), U.moneyEl(tot.returned, cur, 'amt--in v') ])
-      ])
-    ]));
-    Object.keys(t).filter(c => c !== cur).forEach(c => {
-      v.appendChild(el('div', { class:'list' }, [ el('div', { class:'row' }, [
-        el('div', { class:'mid' }, [ el('div', { class:'t', text:c }) ]),
-        el('div', { class:'end' }, [ U.moneyEl(t[c].holding, c, 'amt-lg amt--tr') ]) ]) ]));
+    const owner = guest.ownerName || '';
+    const bal = guestBalances();
+    const curs = Object.keys(bal).sort();
+    if (guest.unlinked) v.appendChild(el('div', { class:'warnbox', text:T('ledger.unlinked') }));
+
+    const block = el('div', { class:'answers' });
+    (curs.length ? curs : [guest.baseCurrency]).forEach((c, i) => {
+      const b = bal[c] || { holding:0, debt:0, net:0 };
+      /* من منظورها: net موجب ⇒ له عليه دَين لها */
+      const w = !b.net ? { text:T('ledger.settled'), tone:'ghost' }
+              : b.net > 0 ? { text:T('ledger.owedToYou',   { other:owner, amount:U.money(Math.abs(b.net), c) }), tone:'in' }
+                          : { text:T('ledger.owedToOther', { other:owner, amount:U.money(Math.abs(b.net), c) }), tone:'out' };
+      block.appendChild(el('div', { class:'lead', style: i ? { borderTop:'1px solid var(--border)' } : null }, [
+        el('div', { class:'k', text: T('ledger.net') + (curs.length > 1 ? ' · ' + c : '') }),
+        el('div', { style:{ fontSize:'19px', fontWeight:'750', marginTop:'4px',
+          color: w.tone === 'in' ? 'var(--income)' : w.tone === 'out' ? 'var(--expense)' : 'var(--muted)' },
+          text:w.text }),
+        el('div', { class:'sub' }, [
+          document.createTextNode(T('guest.holding') + ' '),
+          U.moneyEl(b.holding, c, 'amt-sm amt--tr')
+        ])
+      ]));
     });
-    v.appendChild(el('button', { class:'btn btn--primary btn--wide', onclick:guestPurchaseSheet },
-      [U.icon('bag',17), document.createTextNode(T('guest.addPurchase'))]));
+    v.appendChild(block);
+    v.appendChild(el('p', { class:'note', text:T('guest.subtitle', { owner }) }));
+    if (curs.length > 1) v.appendChild(el('p', { class:'note', text:T('ledger.perCurrency') }));
+
+    if (!guest.unlinked){
+      v.appendChild(el('div', { class:'btnrow' }, [
+        el('button', { class:'btn btn--primary', onclick:()=>guestEntrySheet('purchase') },
+          [U.icon('bag',17), document.createTextNode(T('guest.addPurchase'))]),
+        el('button', { class:'btn', onclick:()=>guestEntrySheet('return') },
+          [U.icon('upload',17), document.createTextNode(T('people.return'))]),
+        el('button', { class:'btn', onclick:()=>guestEntrySheet('borrow') },
+          [U.icon('hand',17), document.createTextNode(T('ledger.guestTypes.borrow'))])
+      ]));
+    }
+
     v.appendChild(sectionHead(T('guest.history')));
     const rows = (guest.entries || []).slice().reverse();
     if (!rows.length) v.appendChild(emptyBox(T('guest.empty'), '', null));
     else {
       const list = el('div', { class:'list' });
-      rows.forEach(e => {
-        const tone = e.type === 'purchase' ? 'out' : e.type === 'handover' ? 'tr' : 'in';
-        const label = { handover:T('people.handover'), purchase:T('people.purchase'),
-                        return:T('people.return') }[e.type] || e.type;
-        list.appendChild(el('div', { class:'row' }, [
-          el('div', { class:'ico', style:{ background: tone==='out' ? 'var(--expense)'
-            : tone==='tr' ? 'var(--primary)' : 'var(--income)' } },
-            [U.icon(e.type === 'purchase' ? 'bag' : 'hand', 17)]),
-          el('div', { class:'mid' }, [ el('div', { class:'t', text:label }),
-            el('div', { class:'s', text: U.dateShort(e.occurredAt) + (e.note ? ' · ' + e.note : '') }) ]),
-          el('div', { class:'end' }, [ U.moneyEl(Number(e.amountMinor)||0, e.currency, 'amt-sm amt--' + tone) ])
-        ]));
-      });
+      rows.forEach(e => list.appendChild(guestRow(e, owner)));
       v.appendChild(list);
     }
     const main = el('main'); main.appendChild(v); root.appendChild(main);
+  }
+  function guestRow(e, owner){
+    const label = T('ledger.guestTypes.' + e.type) || e.type;
+    const isRev = e.type === 'reversal';
+    const reversed = !!e.reversedBy;
+    const tone = (e.type === 'purchase' || e.type === 'borrow') ? 'out'
+               : (e.type === 'handover' || e.type === 'repay') ? 'in' : 'tr';
+    const needsMe = guest.requireConfirmation && !e.confirmedAt && !e.mine && !isRev;
+    const bits = [U.dateShort(e.occurredAt)];
+    if (e.note) bits.push(e.note);
+    bits.push(T('ledger.by', { name: e.mine ? (guest.name || '') : owner }));
+    if (e.reason) bits.push(e.reason);
+    const row = el('div', { class:'row', style: reversed ? { opacity:'.55' } : null }, [
+      el('div', { class:'ico', style:{ background: isRev ? 'var(--muted)'
+        : tone === 'out' ? 'var(--expense)' : tone === 'in' ? 'var(--income)' : 'var(--primary)' } },
+        [U.icon(isRev ? 'x' : e.type === 'purchase' ? 'bag' : 'hand', 16)]),
+      el('div', { class:'mid' }, [
+        el('div', { class:'t' }, [ document.createTextNode(label),
+          reversed ? el('span', { class:'chip chip--ghost', style:{marginInlineStart:'6px'},
+            text:T('ledger.reversed') }) : null,
+          (guest.requireConfirmation && !e.confirmedAt && !isRev)
+            ? el('span', { class:'chip chip--warn', style:{marginInlineStart:'6px'},
+                text:T('ledger.needsConfirm') }) : null ]),
+        el('div', { class:'s', text:bits.join(' · ') })
+      ]),
+      el('div', { class:'end' }, [
+        U.moneyEl(Number(e.amountMinor)||0, e.currency, 'amt-sm amt--' + tone),
+        needsMe ? el('button', { class:'chip chip--in', style:{marginTop:'5px',cursor:'pointer'},
+          text:T('ledger.confirm'), onclick:()=>{
+            w.Cloud.confirmEntry(e.id).then(()=> w.Cloud.personView())
+              .then(pv => { guest = pv; U.toast(T('ledger.confirmed')); renderGuest(); })
+              .catch(er => U.toast(String(er.message || er)));
+          }}) : null
+      ])
+    ]);
+    return row;
   }
   function guestLangSheet(){
     U.sheet(T('settings.language'), T('settings.langNote'), (b, close) => {
@@ -3019,11 +3376,15 @@ window.RASEEDO_DEMO={"schema":"raseedo.backup/1","generatedAt":"2026-09-19T00:00
         onclick:()=>{ S.setSettings({ language:k }); applyLang(); close(); renderGuest(); } })));
     });
   }
-  function guestPurchaseSheet(){
-    const t = guestTotals();
-    U.sheet(T('guest.addPurchase'), T('people.purchaseHelp'), (b, close) => {
+  function guestEntrySheet(type){
+    const bal = guestBalances();
+    const title = T('ledger.guestTypes.' + type);
+    const help = type === 'purchase' ? T('people.purchaseHelp')
+               : type === 'return'   ? T('people.returnHelp')
+               : T('ledger.owedToYou', { other:guest.ownerName || '', amount:'…' });
+    U.sheet(title, help, (b, close) => {
       const amt = el('input', { class:'ctl keypad-amt', id:'g-amt', inputmode:'decimal', placeholder:'0' });
-      const curs = Object.keys(t).length ? Object.keys(t) : [guest.baseCurrency];
+      const curs = Object.keys(bal).length ? Object.keys(bal) : [guest.baseCurrency];
       const cur = el('select', { class:'ctl', id:'g-cur', style:{maxWidth:'130px'} },
         curs.map(c => el('option', { value:c, text:c })));
       b.appendChild(el('div', { class:'field' }, [ el('label', { for:'g-amt', text:T('guest.amount') }),
@@ -3039,10 +3400,10 @@ window.RASEEDO_DEMO={"schema":"raseedo.backup/1","generatedAt":"2026-09-19T00:00
         const minor = S.M.fromInput(amt.value);
         if (minor <= 0) return show(T('add.errAmount'));
         if (!what.value.trim()) return show(T('guest.needWhat'));
-        const c = cur.value;
-        const left = (t[c] && t[c].holding) || 0;
-        if (minor > left) return show(T('guest.tooMuch', { left:U.money(left, c) }));
-        w.Cloud.personAddPurchase(minor, c, what.value.trim(), null,
+        const c = cur.value, hold = (bal[c] && bal[c].holding) || 0;
+        if ((type === 'purchase' || type === 'return') && minor > hold)
+          return show(T('guest.tooMuch', { left:U.money(hold, c) }));
+        w.Cloud.personAddEntry(type, minor, c, what.value.trim(), null,
           new Date(dt.value + 'T12:00:00').toISOString())
           .then(()=> w.Cloud.personView())
           .then(pv => { guest = pv; close(); U.toast(T('guest.saved')); renderGuest(); })
