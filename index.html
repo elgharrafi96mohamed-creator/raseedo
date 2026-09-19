@@ -1765,8 +1765,15 @@ td.num,th.num{ text-align:end; font-variant-numeric:tabular-nums; direction:ltr;
     }
     return j.url;
   }
-  async function signInGoogle(){ w.location.href = await googleUrl(false); }
-  async function linkGoogle(){   w.location.href = await googleUrl(true);  }
+  /* الدخول الجديد: نقطة authorize تعيد التوجيه بنفسها، فالانتقال المباشر يكفي
+     (ولا تسمح بطلب CORS، لذلك لا نستعمل skip_http_redirect هنا). */
+  async function signInGoogle(){
+    await ensureSession();
+    const p = new URLSearchParams({ provider:'google', redirect_to: REDIRECT, apikey: cfg.key });
+    w.location.href = cfg.url.replace(/\/+$/, '') + '/auth/v1/authorize?' + p.toString();
+  }
+  /* الربط بجلسة قائمة: يشترط ترويسة Bearer، فنطلب العنوان ثم ننتقل إليه. */
+  async function linkGoogle(){ w.location.href = await googleUrl(true); }
 
   async function resetPassword(email){
     return http('/auth/v1/recover', { method:'POST', noAuth:true,
