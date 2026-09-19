@@ -1589,14 +1589,29 @@ td.num,th.num{ text-align:end; font-variant-numeric:tabular-nums; direction:ltr;
     return { pushed: rows.length + people.length + pes.length };
   }
 
+  /* PostgREST يحدّ الاستجابة بألف صف — نجلب على صفحات حتى لا تُقتطع البيانات بصمت */
+  async function restAll(table, query, select){
+    const PAGE = 500;
+    let out = [], offset = 0;
+    for (;;){
+      const page = await rest(table + '?' + query + '&select=' + select +
+        '&order=updated_at.asc&limit=' + PAGE + '&offset=' + offset);
+      if (!Array.isArray(page) || !page.length) break;
+      out = out.concat(page);
+      if (page.length < PAGE) break;
+      offset += PAGE;
+      if (offset > 200000) break;
+    }
+    return out;
+  }
   async function pullChanges(){
     if (meta.role !== 'owner') return { pulled:0 };
     const since = meta.lastPull || '1970-01-01T00:00:00Z';
     const q = 'household_id=eq.' + meta.householdId + '&updated_at=gt.' + encodeURIComponent(since);
     const [ents, ppl, pes] = await Promise.all([
-      rest('entities?' + q + '&select=kind,id,data,updated_at,deleted'),
-      rest('people?' + q + '&select=*'),
-      rest('person_entries?' + q + '&select=*')
+      restAll('entities', q, 'kind,id,data,updated_at,deleted'),
+      restAll('people', q, '*'),
+      restAll('person_entries', q, '*')
     ]);
     let n = 0;
     const invKinds = {}; for (const k in KINDS) invKinds[KINDS[k]] = k;
