@@ -1747,15 +1747,26 @@ td.num,th.num{ text-align:end; font-variant-numeric:tabular-nums; direction:ltr;
   }
 
   /** جوجل: ربط بالجلسة الحالية (يحفظ الدفتر) أو دخول جديد. */
-  function googleUrl(link){
+  /* نقطة الربط تشترط ترويسة Bearer حقيقية، والتنقّل المباشر لا يرسل ترويسات.
+     لذلك نطلب العنوان بـ skip_http_redirect ثم ننتقل إليه بأنفسنا. */
+  async function googleUrl(link){
+    await ensureSession();
     const base = cfg.url.replace(/\/+$/, '');
     const path = link ? '/auth/v1/user/identities/authorize' : '/auth/v1/authorize';
-    const p = new URLSearchParams({ provider:'google', redirect_to: REDIRECT });
-    if (link && session && session.access_token) p.set('access_token', session.access_token);
-    return base + path + '?' + p.toString();
+    const p = new URLSearchParams({ provider:'google', redirect_to: REDIRECT,
+                                    skip_http_redirect:'true' });
+    const res = await fetch(base + path + '?' + p.toString(), {
+      headers: { apikey: cfg.key, 'Authorization': 'Bearer ' + session.access_token } });
+    const txt = await res.text();
+    let j = null; try { j = JSON.parse(txt); } catch(e){}
+    if (!res.ok || !j || !j.url){
+      const e = new Error((j && (j.msg || j.message || j.error_code)) || ('HTTP ' + res.status));
+      e.status = res.status; throw e;
+    }
+    return j.url;
   }
-  function signInGoogle(){ w.location.href = googleUrl(false); }
-  function linkGoogle(){   w.location.href = googleUrl(true);  }
+  async function signInGoogle(){ w.location.href = await googleUrl(false); }
+  async function linkGoogle(){   w.location.href = await googleUrl(true);  }
 
   async function resetPassword(email){
     return http('/auth/v1/recover', { method:'POST', noAuth:true,
@@ -3137,8 +3148,9 @@ window.RASEEDO_DEMO={"schema":"raseedo.backup/1","generatedAt":"2026-09-19T00:00
 
     if (a.anonymous || !a.email) list.appendChild(row(T('account.addEmail'), 'person', emailSheet));
     if (!hasGoogle) list.appendChild(row(T('account.addGoogle'), 'check', ()=>{
-      try { a.anonymous ? w.Cloud.signInGoogle() : w.Cloud.linkGoogle(); }
-      catch(e){ U.toast(T('account.googleOff')); }
+      U.toast(T('common.loading') || '…');
+      (a.anonymous ? w.Cloud.signInGoogle() : w.Cloud.linkGoogle())
+        .catch(e => U.toast(T('account.err', { msg:String(e.message || e) })));
     }));
     list.appendChild(row(T('account.switchAccount'), 'upload', () => emailSheet(true)));
     if (!a.anonymous)
@@ -3202,8 +3214,8 @@ window.RASEEDO_DEMO={"schema":"raseedo.backup/1","generatedAt":"2026-09-19T00:00
         }}));
       }
       b.appendChild(el('button', { class:'btn btn--wide', text:T('account.continueGoogle'), onclick: () => {
-        try { (mode === 'in' || a.anonymous) ? w.Cloud.signInGoogle() : w.Cloud.linkGoogle(); }
-        catch(e){ U.toast(T('account.googleOff')); }
+        ((mode === 'in' || a.anonymous) ? w.Cloud.signInGoogle() : w.Cloud.linkGoogle())
+          .catch(e => U.toast(T('account.err', { msg:String(e.message || e) })));
       }}));
       b.appendChild(el('button', { class:'btn btn--wide', text:T('common.cancel'), onclick:close }));
     });
