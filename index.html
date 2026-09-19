@@ -459,6 +459,28 @@ td.num,th.num{ text-align:end; font-variant-numeric:tabular-nums; direction:ltr;
       anchorHelp:'رصيد الحساب = نقطة المرجع + الحركات بعد تاريخها.',
       ok:'لا مشاكل.', fixNow:'عالِج'
     },
+    account:{
+      title:'الحساب', subtitle:'حسابك يحمي دفترك. بلا حساب، الدفتر مرتبط بهذا المتصفّح وحده.',
+      anonymous:'جلسة مجهولة — لا بريد ولا جوجل',
+      signedInAs:'داخل باسم {email}', viaGoogle:'عبر جوجل',
+      why:'بحساب واحد تفتح دفترك على أي جهاز فورًا، بلا رمز جهاز.',
+      addEmail:'أضف بريدًا وكلمة مرور', addGoogle:'اربط حساب جوجل',
+      signIn:'تسجيل الدخول', signUp:'إنشاء حساب', continueGoogle:'المتابعة بجوجل',
+      email:'البريد الإلكتروني', password:'كلمة المرور', password2:'أعد كلمة المرور',
+      emailPh:'name@example.com', passwordHint:'٨ أحرف على الأقل',
+      mismatch:'كلمتا المرور غير متطابقتين.', weak:'كلمة المرور قصيرة — ٨ أحرف على الأقل.',
+      badEmail:'اكتب بريدًا صحيحًا.',
+      attached:'رُبط الحساب بدفترك — نفس البيانات، هوية دائمة.',
+      signedIn:'تم الدخول', signedOut:'خرجتَ من الحساب',
+      forgot:'نسيتُ كلمة المرور', resetSent:'أُرسل رابط الاستعادة إلى بريدك.',
+      signOut:'تسجيل الخروج',
+      signOutWarn:'الخروج يفصل هذا الجهاز عن الدفتر. بياناتك تبقى على الخادم، وتعود إليها بالدخول مرة أخرى.',
+      confirmSent:'أرسلنا رسالة تأكيد إلى {email}. افتحها ثم عُد.',
+      switchAccount:'دخول بحساب آخر',
+      keepData:'بياناتك الحالية تبقى كما هي — نُرقّي الجلسة لا نستبدلها.',
+      googleOff:'دخول جوجل غير مفعّل بعد على الخادم.',
+      err:'تعذّر إتمام العملية: {msg}'
+    },
     cloud:{
       title:'المزامنة والمشاركة', status:'الحالة', synced:'متزامن', syncing:'يزامن…',
       offline:'بلا اتصال — سيُعاد الإرسال تلقائيًا', pending:'{n} بانتظار الإرسال',
@@ -605,6 +627,28 @@ td.num,th.num{ text-align:end; font-variant-numeric:tabular-nums; direction:ltr;
       anchorHelp:'Hesap bakiyesi = referans noktası + o tarihten sonraki hareketler.',
       ok:'Sorun yok.', fixNow:'Düzelt'
     },
+    account:{
+      title:'Hesap', subtitle:'Hesabın defterini korur. Hesapsız defter yalnızca bu tarayıcıya bağlıdır.',
+      anonymous:'Anonim oturum — e-posta veya Google yok',
+      signedInAs:'{email} olarak girildi', viaGoogle:'Google ile',
+      why:'Tek hesapla defterini her cihazda anında açarsın, cihaz koduna gerek kalmaz.',
+      addEmail:'E-posta ve parola ekle', addGoogle:'Google hesabını bağla',
+      signIn:'Giriş yap', signUp:'Hesap oluştur', continueGoogle:'Google ile devam et',
+      email:'E-posta', password:'Parola', password2:'Parolayı tekrar gir',
+      emailPh:'ad@ornek.com', passwordHint:'En az 8 karakter',
+      mismatch:'Parolalar eşleşmiyor.', weak:'Parola çok kısa — en az 8 karakter.',
+      badEmail:'Geçerli bir e-posta yaz.',
+      attached:'Hesap defterine bağlandı — aynı veriler, kalıcı kimlik.',
+      signedIn:'Giriş yapıldı', signedOut:'Çıkış yapıldı',
+      forgot:'Parolamı unuttum', resetSent:'Sıfırlama bağlantısı e-postana gönderildi.',
+      signOut:'Çıkış yap',
+      signOutWarn:'Çıkış bu cihazı defterden ayırır. Verilerin sunucuda kalır, tekrar girince geri gelir.',
+      confirmSent:'{email} adresine doğrulama gönderdik. Aç ve geri dön.',
+      switchAccount:'Başka hesapla gir',
+      keepData:'Mevcut verilerin aynen kalır — oturumu değiştirmiyoruz, yükseltiyoruz.',
+      googleOff:'Google girişi sunucuda henüz etkin değil.',
+      err:'İşlem tamamlanamadı: {msg}'
+    },
     cloud:{
       title:'Eşitleme ve paylaşım', status:'Durum', synced:'Eşitlendi', syncing:'Eşitleniyor…',
       offline:'Bağlantı yok — otomatik yeniden denenecek', pending:'{n} gönderilmeyi bekliyor',
@@ -750,6 +794,28 @@ td.num,th.num{ text-align:end; font-variant-numeric:tabular-nums; direction:ltr;
       needsReview:'Attachments needing review', anchors:'Balance anchors',
       anchorHelp:'Account balance = anchor + movements after its date.',
       ok:'Nothing to fix.', fixNow:'Fix'
+    },
+    account:{
+      title:'Account', subtitle:'An account protects your ledger. Without one it lives in this browser alone.',
+      anonymous:'Anonymous session — no email, no Google',
+      signedInAs:'Signed in as {email}', viaGoogle:'via Google',
+      why:'With one account your ledger opens instantly on any device — no device code.',
+      addEmail:'Add an email and password', addGoogle:'Link a Google account',
+      signIn:'Sign in', signUp:'Create account', continueGoogle:'Continue with Google',
+      email:'Email', password:'Password', password2:'Repeat password',
+      emailPh:'name@example.com', passwordHint:'At least 8 characters',
+      mismatch:'The passwords do not match.', weak:'Password too short — at least 8 characters.',
+      badEmail:'Enter a valid email.',
+      attached:'Account linked to your ledger — same data, permanent identity.',
+      signedIn:'Signed in', signedOut:'Signed out',
+      forgot:'I forgot my password', resetSent:'A reset link was sent to your email.',
+      signOut:'Sign out',
+      signOutWarn:'Signing out detaches this device from the ledger. Your data stays on the server and returns when you sign in again.',
+      confirmSent:'We sent a confirmation to {email}. Open it, then come back.',
+      switchAccount:'Sign in with another account',
+      keepData:'Your current data stays as it is — we upgrade the session, we do not replace it.',
+      googleOff:'Google sign-in is not enabled on the server yet.',
+      err:'Could not complete: {msg}'
     },
     cloud:{
       title:'Sync & sharing', status:'Status', synced:'Synced', syncing:'Syncing…',
@@ -1560,7 +1626,10 @@ td.num,th.num{ text-align:end; font-variant-numeric:tabular-nums; direction:ltr;
     if (!s || !s.access_token) return;
     session = { access_token:s.access_token, refresh_token:s.refresh_token,
                 expires_at: Date.now() + ((s.expires_in || 3600) - 60) * 1000,
-                user: s.user ? { id:s.user.id, is_anonymous:s.user.is_anonymous } : null };
+                user: s.user ? { id:s.user.id, is_anonymous:s.user.is_anonymous,
+                                 email:s.user.email || null,
+                                 providers: ((s.user.app_metadata||{}).providers) ||
+                                            ((s.user.identities||[]).map(i=>i.provider)) || [] } : null };
     save();
   }
   async function signInAnonymously(){
@@ -1599,6 +1668,105 @@ td.num,th.num{ text-align:end; font-variant-numeric:tabular-nums; direction:ltr;
       if (e.status === 401){ await refresh(); return http('/rest/v1/' + path, opts); }
       throw e;
     }
+  }
+
+  /* ---------- الحساب: بريد أو جوجل ----------
+     المبدأ: لا نُنشئ مستخدمًا جديدًا. نُرقّي الجلسة المجهولة الحالية إلى حساب دائم
+     بنفس المعرّف، فيبقى الدفتر وكل ما فيه كما هو. */
+
+  const REDIRECT = (function(){
+    const u = new URL(w.location.href);
+    u.hash = ''; u.search = '';
+    return u.toString();
+  })();
+
+  function accountInfo(){
+    const u = session && session.user;
+    if (!u) return { signedIn:false, anonymous:true, email:null, providers:[] };
+    const provs = (u.providers || []).filter(p => p && p !== 'anon');
+    return { signedIn:true, anonymous: !!u.is_anonymous && !u.email && !provs.length,
+             email: u.email || null, providers: provs, userId: u.id };
+  }
+
+  /** يقرأ ما يعود به جوجل في عنوان الصفحة ويحفظ الجلسة. يُستدعى عند الإقلاع. */
+  function consumeAuthRedirect(){
+    const h = w.location.hash || '';
+    if (h.indexOf('access_token=') < 0) return false;
+    const q = new URLSearchParams(h.replace(/^#/, ''));
+    const at = q.get('access_token'), rt = q.get('refresh_token');
+    if (!at) return false;
+    setSession({ access_token:at, refresh_token:rt,
+                 expires_in: Number(q.get('expires_in')) || 3600 });
+    try { history.replaceState(null, '', REDIRECT); } catch(e){}
+    meta.role = null; save();
+    return true;
+  }
+
+  /** بعد أي دخول: اجلب بيانات المستخدم كاملة حتى نعرف البريد والمزوّد. */
+  async function refreshUser(){
+    if (!session) return null;
+    try {
+      const u = await http('/auth/v1/user');
+      if (u && u.id && session.user){
+        session.user.email = u.email || null;
+        session.user.is_anonymous = !!u.is_anonymous;
+        session.user.providers = (u.app_metadata && u.app_metadata.providers) ||
+                                 (u.identities || []).map(i => i.provider) || [];
+        save(); emit();
+      }
+      return u;
+    } catch(e){ return null; }
+  }
+
+  /** يربط بريدًا وكلمة مرور بالجلسة الحالية (نفس المعرّف، نفس الدفتر). */
+  async function attachEmail(email, password){
+    await ensureSession();
+    const u = await http('/auth/v1/user', { method:'PUT',
+      body:{ email:String(email).trim(), password:String(password) } });
+    await refreshUser();
+    return u;
+  }
+
+  /** دخول بحساب بريد موجود — يستبدل الجلسة الحالية. */
+  async function signInEmail(email, password){
+    const s = await http('/auth/v1/token?grant_type=password', { method:'POST', noAuth:true,
+      body:{ email:String(email).trim(), password:String(password) } });
+    setSession(s);
+    meta = { householdId:null, role:null, personId:null, lastPull:null, lastPush:null };
+    save(); await refreshUser(); emit();
+    return session;
+  }
+
+  /** إنشاء حساب بريد جديد مستقل (للمدعوّ الذي لم يبدأ بجلسة). */
+  async function signUpEmail(email, password){
+    const s = await http('/auth/v1/signup', { method:'POST', noAuth:true,
+      body:{ email:String(email).trim(), password:String(password),
+             data:{ app:'raseedo' } } });
+    if (s && s.access_token){ setSession(s); await refreshUser(); emit(); }
+    return s;
+  }
+
+  /** جوجل: ربط بالجلسة الحالية (يحفظ الدفتر) أو دخول جديد. */
+  function googleUrl(link){
+    const base = cfg.url.replace(/\/+$/, '');
+    const path = link ? '/auth/v1/user/identities/authorize' : '/auth/v1/authorize';
+    const p = new URLSearchParams({ provider:'google', redirect_to: REDIRECT });
+    if (link && session && session.access_token) p.set('access_token', session.access_token);
+    return base + path + '?' + p.toString();
+  }
+  function signInGoogle(){ w.location.href = googleUrl(false); }
+  function linkGoogle(){   w.location.href = googleUrl(true);  }
+
+  async function resetPassword(email){
+    return http('/auth/v1/recover', { method:'POST', noAuth:true,
+      body:{ email:String(email).trim(), gotrue_meta_security:{} } });
+  }
+
+  async function signOutAccount(){
+    try { await http('/auth/v1/logout', { method:'POST' }); } catch(e){}
+    session = null;
+    meta = { householdId:null, role:null, personId:null, lastPull:null, lastPush:null };
+    save(); emit();
   }
 
   /* ---------- الأدوار ---------- */
@@ -1823,6 +1991,8 @@ td.num,th.num{ text-align:end; font-variant-numeric:tabular-nums; direction:ltr;
     get session(){ return session ? { userId:(session.user||{}).id } : null; },
     subscribe(f){ listeners.add(f); return () => listeners.delete(f); },
     ensureSession, detectRole, claimOwnerDevice, claimPerson,
+    accountInfo, consumeAuthRedirect, refreshUser, attachEmail, signInEmail,
+    signUpEmail, signInGoogle, linkGoogle, resetPassword, signOutAccount,
     createDeviceCode, recoveryCode, createInvite, revokeInvite,
     personView, personAddPurchase, personAddEntry, reverseEntry, confirmEntry,
     settlePerson, setConfirmation, unlinkPerson, personBalances,
@@ -2755,6 +2925,7 @@ window.RASEEDO_DEMO={"schema":"raseedo.backup/1","generatedAt":"2026-09-19T00:00
       ['accounts','wallet',T('more.accounts')], ['budgets','tag',T('more.budgets')],
       ['categories','tag',T('more.categories')], ['tx','calendar',T('tx.title')],
       ['io','download',T('more.dataIO')], ['cloud','upload',T('cloud.title')],
+      ['account','person',T('account.title')],
       ['health','alert',T('more.health')],
       ['settings','settings',T('more.settings')], ['about','person',T('more.about')]
     ];
@@ -2936,6 +3107,108 @@ window.RASEEDO_DEMO={"schema":"raseedo.backup/1","generatedAt":"2026-09-19T00:00
     if (st.lastSyncAt) return { text:T('cloud.synced'), tone:'in' };
     return { text:T('cloud.never'), tone:'ghost' };
   }
+  /* ================= الحساب: بريد أو جوجل =================
+     الترقية لا الاستبدال: الجلسة المجهولة تبقى بمعرّفها ويُضاف إليها بريد أو جوجل،
+     فلا يتغيّر الدفتر ولا يُفقد منه شيء. */
+  function viewAccount(){
+    const v = el('div', { class:'view' });
+    v.appendChild(backHead(T('account.title')));
+    if (!w.Cloud || !w.Cloud.configured()){
+      v.appendChild(el('div', { class:'warnbox', text:T('cloud.previewNoSync') }));
+      return v;
+    }
+    const a = w.Cloud.accountInfo();
+    const hasGoogle = (a.providers || []).indexOf('google') >= 0;
+    const label = a.anonymous ? T('account.anonymous')
+                : a.email ? T('account.signedInAs', { email:a.email })
+                : hasGoogle ? T('account.viaGoogle') : T('account.signedInAs', { email:'—' });
+
+    v.appendChild(el('div', { class:'answers' }, [ el('div', { class:'lead' }, [
+      el('div', { class:'k', text:T('account.title') }),
+      el('div', { style:{ fontSize:'17px', fontWeight:'750', marginTop:'4px' }, text:label }),
+      el('div', { class:'sub', text: a.anonymous ? T('account.why') : T('account.subtitle') })
+    ])]));
+
+    const list = el('div', { class:'list' });
+    const row = (label, ic, fn, tone) => el('button', { class:'row', onclick:fn }, [
+      el('div', { class:'ico', style:{ background:'var(--surface-sunk)',
+        color: tone || 'var(--primary)' } }, [U.icon(ic,17)]),
+      el('div', { class:'mid' }, [ el('div', { class:'t', text:label }) ]), U.icon('chevron',16) ]);
+
+    if (a.anonymous || !a.email) list.appendChild(row(T('account.addEmail'), 'person', emailSheet));
+    if (!hasGoogle) list.appendChild(row(T('account.addGoogle'), 'check', ()=>{
+      try { a.anonymous ? w.Cloud.signInGoogle() : w.Cloud.linkGoogle(); }
+      catch(e){ U.toast(T('account.googleOff')); }
+    }));
+    list.appendChild(row(T('account.switchAccount'), 'upload', () => emailSheet(true)));
+    if (!a.anonymous)
+      list.appendChild(row(T('account.signOut'), 'x', () => {
+        U.confirmSheet(T('account.signOut'), T('account.signOutWarn'), T('account.signOut'), ()=>{
+          w.Cloud.signOutAccount().then(()=>{ U.toast(T('account.signedOut')); go('more'); });
+        });
+      }, 'var(--expense)'));
+    v.appendChild(list);
+    v.appendChild(el('p', { class:'note', text:T('account.keepData') }));
+    return v;
+  }
+
+  /** ورقة البريد: إنشاء/ربط أو دخول. */
+  function emailSheet(signInMode){
+    const a = w.Cloud.accountInfo();
+    const mode = signInMode ? 'in' : (a.anonymous || !a.email ? 'attach' : 'in');
+    const title = mode === 'in' ? T('account.signIn') : T('account.addEmail');
+    U.sheet(title, mode === 'attach' ? T('account.keepData') : '', (b, close) => {
+      const mk = (id, label, type, ph) => {
+        const i = el('input', { class:'ctl', id:id, type:type, placeholder:ph || '',
+                                autocapitalize:'off', autocorrect:'off', spellcheck:'false' });
+        b.appendChild(el('div', { class:'field' }, [ el('label', { for:id, text:label }), i ]));
+        return i;
+      };
+      const em = mk('acc-em', T('account.email'), 'email', T('account.emailPh'));
+      const pw = mk('acc-pw', T('account.password'), 'password', T('account.passwordHint'));
+      const pw2 = mode === 'attach' ? mk('acc-pw2', T('account.password2'), 'password', '') : null;
+
+      const go2 = el('button', { class:'btn btn--primary btn--wide',
+        text: mode === 'in' ? T('account.signIn') : T('account.signUp'), onclick: async () => {
+        const email = em.value.trim(), pass = pw.value;
+        if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) return U.toast(T('account.badEmail'));
+        if (pass.length < 8) return U.toast(T('account.weak'));
+        if (pw2 && pw2.value !== pass) return U.toast(T('account.mismatch'));
+        go2.disabled = true;
+        try {
+          if (mode === 'in'){
+            await w.Cloud.signInEmail(email, pass);
+            await w.Cloud.detectRole();
+            await w.Cloud.sync({ noRetry:true });
+            U.toast(T('account.signedIn'));
+          } else {
+            await w.Cloud.attachEmail(email, pass);
+            U.toast(T('account.attached'));
+          }
+          close(); render();
+        } catch(e){
+          go2.disabled = false;
+          U.toast(T('account.err', { msg:String(e.message || e) }));
+        }
+      }});
+      b.appendChild(go2);
+
+      if (mode === 'in'){
+        b.appendChild(el('button', { class:'btn btn--wide', text:T('account.forgot'), onclick: async () => {
+          const email = em.value.trim();
+          if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) return U.toast(T('account.badEmail'));
+          try { await w.Cloud.resetPassword(email); U.toast(T('account.resetSent')); }
+          catch(e){ U.toast(T('account.err', { msg:String(e.message || e) })); }
+        }}));
+      }
+      b.appendChild(el('button', { class:'btn btn--wide', text:T('account.continueGoogle'), onclick: () => {
+        try { (mode === 'in' || a.anonymous) ? w.Cloud.signInGoogle() : w.Cloud.linkGoogle(); }
+        catch(e){ U.toast(T('account.googleOff')); }
+      }}));
+      b.appendChild(el('button', { class:'btn btn--wide', text:T('common.cancel'), onclick:close }));
+    });
+  }
+
   function viewCloud(){
     const v = el('div', { class:'view' });
     v.appendChild(backHead(T('cloud.title')));
@@ -3476,7 +3749,7 @@ window.RASEEDO_DEMO={"schema":"raseedo.backup/1","generatedAt":"2026-09-19T00:00
     const nav = el('nav', { class:'tabbar', 'aria-label':T('tabs.home') });
     items.forEach(([r,ic,label]) => {
       const active = (r === route.name) || (r === 'people' && route.name === 'person') ||
-                     (r === 'more' && ['settings','accounts','categories','budgets','io','health','about','tx','cloud'].includes(route.name));
+                     (r === 'more' && ['settings','accounts','categories','budgets','io','health','about','tx','cloud','account'].includes(route.name));
       nav.appendChild(el('button', { 'aria-current': active ? 'page' : null,
         'data-add': r === '__add' ? '1' : null, onclick:()=>{
         if (r === '__add') openAdd(); else go(r);
@@ -3498,6 +3771,7 @@ window.RASEEDO_DEMO={"schema":"raseedo.backup/1","generatedAt":"2026-09-19T00:00
       case 'io': return viewIO();
       case 'health': return viewHealth();
       case 'cloud': return viewCloud();
+      case 'account': return viewAccount();
       case 'about': return viewAbout();
       case 'tx': return viewTx();
       default: return viewHome();
@@ -3539,6 +3813,8 @@ window.RASEEDO_DEMO={"schema":"raseedo.backup/1","generatedAt":"2026-09-19T00:00
     const conf = w.RASEEDO_CLOUD;
     if (conf && conf.url && conf.key && w.Cloud){
       w.Cloud.configure(conf);
+      // عودة جوجل تأتي في عنوان الصفحة — نلتقط الجلسة قبل أي شيء آخر.
+      try { if (w.Cloud.consumeAuthRedirect()) w.Cloud.refreshUser(); } catch(e){}
       w.Cloud.subscribe(() => {
         const bar = document.querySelector('.topbar');
         if (bar && w.Cloud.meta.role !== 'person'){

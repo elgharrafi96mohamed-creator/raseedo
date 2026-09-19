@@ -1,7 +1,7 @@
 /* رصيدو — عمل دون إنترنت.
    الصفحة نفسها: الشبكة أولًا ثم المخزّن (حتى يصل التحديث فورًا).
    الأصول الثابتة: المخزّن أولًا. */
-const VERSION = '9e9fe72d52';
+const VERSION = 'a9d91245b0';
 const CACHE = 'raseedo-' + VERSION;
 const ASSETS = ['index.html', 'manifest.webmanifest', 'icon-192.png', 'icon-512.png', 'apple-touch-icon.png'];
 self.addEventListener('install', e => {
