@@ -1699,6 +1699,7 @@ td.num,th.num{ text-align:end; font-variant-numeric:tabular-nums; direction:ltr;
                  expires_in: Number(q.get('expires_in')) || 3600 });
     try { history.replaceState(null, '', REDIRECT); } catch(e){}
     meta.role = null; save();
+    refreshUser();
     return true;
   }
 
@@ -1707,7 +1708,10 @@ td.num,th.num{ text-align:end; font-variant-numeric:tabular-nums; direction:ltr;
     if (!session) return null;
     try {
       const u = await http('/auth/v1/user');
-      if (u && u.id && session.user){
+      if (u && u.id){
+        // العودة من جوجل تأتي برموز بلا كائن مستخدم، فننشئه هنا لا نشترط وجوده.
+        if (!session.user) session.user = { id:u.id };
+        session.user.id = u.id;
         session.user.email = u.email || null;
         session.user.is_anonymous = !!u.is_anonymous;
         session.user.providers = (u.app_metadata && u.app_metadata.providers) ||
