@@ -363,7 +363,7 @@ td.num,th.num{ text-align:end; font-variant-numeric:tabular-nums; direction:ltr;
 <body>
 <div id="app" role="application" aria-label="Raseedo"></div>
 <noscript><p style="padding:24px;font-family:system-ui">رصيدو يحتاج جافاسكريبت · Raseedo needs JavaScript · Raseedo JavaScript gerektirir</p></noscript>
-<script>window.RASEEDO_ASSET_BASE="";window.RASEEDO_CLOUD={"url": "https://kxewboroarxoqgdkfssu.supabase.co", "key": "sb_publishable_lXfH_fe6UaMmFbWUspwWiQ_5neBPlWi"};</script>
+<script>window.RASEEDO_ASSET_BASE="";window.RASEEDO_CLOUD={"url": "", "key": ""};</script>
 <script>/* رصيدو — الترجمة الكاملة: شاشات، نماذج، أخطاء، إشعارات، تقارير، ملفات مصدّرة */
 (function (w) {
   const AR = {
@@ -959,11 +959,14 @@ td.num,th.num{ text-align:end; font-variant-numeric:tabular-nums; direction:ltr;
      debt    = ما أخذته أنا منه      (أخذتُ − سدّدتُ − تسوية/debt)
      net     = debt − holding        (موجب: لـه عندي · سالب: لي عنده)
      القيد لا يُحتسب إن أُلغي بقيد عكسي، ولا إن كان التأكيد مشترطًا ولم يُؤكَّد.  */
-  function entryCounts(e, requireConfirm){
+  function entryRequiresConfirm(e){
+    return !!(e.requiresConfirmation || e.requires_confirmation);
+  }
+  function entryCounts(e){
     if (e.deleted) return false;
     if (e.reversedByEntryId || e.reversed_by_entry_id) return false;
     if (e.type === 'reversal') return false;
-    if (requireConfirm && !(e.confirmedAt || e.confirmed_at)) return false;
+    if (entryRequiresConfirm(e) && !(e.confirmedAt || e.confirmed_at)) return false;
     return true;
   }
   function personLedger(personId){
@@ -978,7 +981,7 @@ td.num,th.num{ text-align:end; font-variant-numeric:tabular-nums; direction:ltr;
     let handed = 0, spent = 0, returned = 0, taken = 0, repaid = 0, pending = 0;
     rows.forEach(p => {
       const c = p.currency, k = cur(c), a = p.amountMinor || 0;
-      if (!entryCounts(p, req)){ if (req && !p.confirmedAt && p.type !== 'reversal') pending++; return; }
+      if (!entryCounts(p)){ if (entryRequiresConfirm(p) && !p.confirmedAt && p.type !== 'reversal') pending++; return; }
       const axis = p.settleAxis || p.settle_axis;
       if (p.type === 'handover'){ k.handed += a;  handed  += toBase(a,c,p.fx); }
       else if (p.type === 'purchase'){ k.spent += a;   spent   += toBase(a,c,p.fx); }
@@ -1016,7 +1019,8 @@ td.num,th.num{ text-align:end; font-variant-numeric:tabular-nums; direction:ltr;
     const rev = Object.assign({}, e, { id:nid, type:'reversal', reversesEntryId:e.id,
       reason: reason || null, occurredAt:new Date().toISOString(),
       createdAt:new Date().toISOString(), updatedAt:new Date().toISOString(),
-      confirmedAt:null, reversedByEntryId:null, source:{ app:'raseedo' } });
+      confirmedAt:null, reversedByEntryId:null, requiresConfirmation:false,
+      source:{ app:'raseedo' } });
     db.personTransactions.push(rev);
     e.reversedByEntryId = nid; e.updatedAt = new Date().toISOString();
     audit('reverse','personTransaction',e.id,{ reversal:nid, reason:reason||null });
@@ -1125,6 +1129,11 @@ td.num,th.num{ text-align:end; font-variant-numeric:tabular-nums; direction:ltr;
                             baseAmountMinor: rec.currency===db.settings.baseCurrency ? rec.amountMinor
                                              : Math.round(rec.amountMinor * rate(rec.currency)),
                             rate: rate(rec.currency), at: rec.occurredAt };
+    if (rec.requiresConfirmation === undefined){
+      const pr = byId(db.people, rec.personId) || {};
+      rec.requiresConfirmation = (rec.type === 'settle' || rec.type === 'reversal')
+                                 ? false : !!pr.requireConfirmation;
+    }
     db.personTransactions.push(rec); audit('create','personTransaction',rec.id); persist(); emit();
     return rec;
   }
@@ -1768,6 +1777,7 @@ td.num,th.num{ text-align:end; font-variant-numeric:tabular-nums; direction:ltr;
                        reversedByEntryId:r.reversed_by_entry_id || null,
                        settleAxis:r.settle_axis || null, reason:r.reason || null,
                        confirmedAt:r.confirmed_at || null, createdBy:r.created_by || null,
+                       requiresConfirmation: !!r.requires_confirmation,
                        createdByName:r.created_by_name || null,
                        source:{ app:'cloud' } };
       if (r.deleted){ if (i >= 0){ arr.splice(i,1); n++; } return; }
@@ -2405,7 +2415,7 @@ window.RASEEDO_DEMO={"schema":"raseedo.backup/1","generatedAt":"2026-09-19T00:00
         el('div', { class:'t' }, [ document.createTextNode(label),
           reversed ? el('span', { class:'chip chip--ghost', style:{marginInlineStart:'6px'},
             text:T('ledger.reversed') }) : null,
-          (!r.confirmedAt && person.requireConfirmation && !isRev)
+          (!r.confirmedAt && r.requiresConfirmation && !isRev)
             ? el('span', { class:'chip chip--warn', style:{marginInlineStart:'6px'},
                 text:T('ledger.needsConfirm') }) : null ]),
         el('div', { class:'s', text:bits.join(' · ') })
@@ -2428,11 +2438,22 @@ window.RASEEDO_DEMO={"schema":"raseedo.backup/1","generatedAt":"2026-09-19T00:00
       if (r.createdByName) add(T('ledger.by', { name:'' }).replace('{name}','').trim() || '—',
                                document.createTextNode(r.createdByName));
       if (r.reason) add(T('ledger.reverseReason'), document.createTextNode(r.reason));
-      add(T('ledger.confirmed'), document.createTextNode(
-        r.confirmedAt ? U.dateShort(r.confirmedAt) : T('ledger.needsConfirm')));
+      if (r.requiresConfirmation || r.confirmedAt)
+        add(T('ledger.confirmed'), document.createTextNode(
+          r.confirmedAt ? U.dateShort(r.confirmedAt) : T('ledger.needsConfirm')));
       b.appendChild(dl);
       if (r.reversedByEntryId) b.appendChild(el('div', { class:'warnbox', text:T('ledger.reversed') }));
       const row = el('div', { class:'btnrow' });
+      const myUid = (w.Cloud && w.Cloud.session) ? w.Cloud.session.userId : null;
+      const mineEntry = !r.createdBy || (myUid && r.createdBy === myUid);
+      if (r.requiresConfirmation && !r.confirmedAt && !mineEntry && !r.reversedByEntryId
+          && w.Cloud && w.Cloud.configured()){
+        row.appendChild(el('button', { class:'btn btn--primary', text:T('ledger.confirm'), onclick:()=>{
+          w.Cloud.confirmEntry(r.id).then(()=> w.Cloud.pullChanges())
+            .then(()=>{ close(); U.toast(T('ledger.confirmed')); render(); })
+            .catch(e => U.toast(String(e.message || e)));
+        }}));
+      }
       if (!r.reversedByEntryId && r.type !== 'reversal' && !person.unlinkedAt){
         row.appendChild(el('button', { class:'btn btn--danger', text:T('ledger.reverse'), onclick:()=>{
           close(); reverseSheet(person, r);
@@ -3262,7 +3283,7 @@ window.RASEEDO_DEMO={"schema":"raseedo.backup/1","generatedAt":"2026-09-19T00:00
         const c = e.currency || guest.baseCurrency, a = Number(e.amountMinor)||0;
         agg[c] = agg[c] || { holding:0, debt:0, net:0 };
         if (e.reversedBy || e.type === 'reversal') return;
-        if (guest.requireConfirmation && !e.confirmedAt) return;
+        if (e.requiresConfirmation && !e.confirmedAt) return;
         if (e.type === 'handover') agg[c].holding += a;
         else if (e.type === 'purchase' || e.type === 'return') agg[c].holding -= a;
         else if (e.type === 'borrow') agg[c].debt += a;
@@ -3340,7 +3361,7 @@ window.RASEEDO_DEMO={"schema":"raseedo.backup/1","generatedAt":"2026-09-19T00:00
     const reversed = !!e.reversedBy;
     const tone = (e.type === 'purchase' || e.type === 'borrow') ? 'out'
                : (e.type === 'handover' || e.type === 'repay') ? 'in' : 'tr';
-    const needsMe = guest.requireConfirmation && !e.confirmedAt && !e.mine && !isRev;
+    const needsMe = e.requiresConfirmation && !e.confirmedAt && !e.mine && !isRev;
     const bits = [U.dateShort(e.occurredAt)];
     if (e.note) bits.push(e.note);
     bits.push(T('ledger.by', { name: e.mine ? (guest.name || '') : owner }));
@@ -3353,7 +3374,7 @@ window.RASEEDO_DEMO={"schema":"raseedo.backup/1","generatedAt":"2026-09-19T00:00
         el('div', { class:'t' }, [ document.createTextNode(label),
           reversed ? el('span', { class:'chip chip--ghost', style:{marginInlineStart:'6px'},
             text:T('ledger.reversed') }) : null,
-          (guest.requireConfirmation && !e.confirmedAt && !isRev)
+          (e.requiresConfirmation && !e.confirmedAt && !isRev)
             ? el('span', { class:'chip chip--warn', style:{marginInlineStart:'6px'},
                 text:T('ledger.needsConfirm') }) : null ]),
         el('div', { class:'s', text:bits.join(' · ') })
