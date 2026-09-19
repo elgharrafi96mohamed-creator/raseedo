@@ -2644,18 +2644,33 @@ window.RASEEDO_DEMO={"schema":"raseedo.backup/1","generatedAt":"2026-09-19T00:00
     if (st.lastError) v.appendChild(el('p', { class:'note', text:st.lastError }));
     return v;
   }
+  function clearDemoBeforeLink(){
+    if (S.db.demo){
+      const fresh = S.empty();
+      fresh.settings = Object.assign(fresh.settings, { language:S.db.settings.language,
+        numerals:S.db.settings.numerals, theme:S.db.settings.theme });
+      S.set(fresh);
+    }
+  }
   function deviceCodeSheet(){
-    U.sheet(T('cloud.haveCode'), T('cloud.enterCode'), (b, close) => {
-      const inp = el('input', { class:'ctl keypad-amt', id:'dev-code', inputmode:'numeric',
-                                maxlength:'6', placeholder:'000000' });
+    U.sheet(T('cloud.haveCode'), T('cloud.enterCode') + ' — ' + T('cloud.recovery'), (b, close) => {
+      const inp = el('input', { class:'ctl keypad-amt', id:'dev-code', inputmode:'text',
+                                autocapitalize:'off', autocorrect:'off', placeholder:'000000' });
       b.appendChild(el('div', { class:'field' }, [
-        el('label', { for:'dev-code', text:T('cloud.deviceCode') }), inp ]));
+        el('label', { for:'dev-code', text:T('cloud.deviceCode') + ' / ' + T('cloud.recovery') }), inp ]));
       const err = el('div', { class:'warnbox', hidden:true }); b.appendChild(err);
+      const busy = el('p', { class:'note', hidden:true, text:T('cloud.syncing') }); b.appendChild(busy);
       b.appendChild(el('button', { class:'btn btn--primary btn--wide', text:T('common.confirm'), onclick:()=>{
-        w.Cloud.claimOwnerDevice(inp.value).then(()=>{
-          close(); U.toast(T('cloud.owner'));
-          w.Cloud.pullChanges().then(()=>render()).catch(()=>render());
-        }).catch(()=>{ err.textContent = T('cloud.badCode'); err.hidden = false; });
+        const code = inp.value.trim();
+        if (!code) return;
+        err.hidden = true; busy.hidden = false;
+        clearDemoBeforeLink();
+        w.Cloud.claimOwnerDevice(code)
+          .catch(() => w.Cloud.rpc('claim_owner', { p_token: code }).then(r => {
+            w.Cloud.meta.householdId = r.householdId; w.Cloud.meta.role = 'owner'; return r; }))
+          .then(()=> w.Cloud.pullChanges())
+          .then(()=>{ close(); U.toast(T('cloud.owner')); render(); })
+          .catch(()=>{ busy.hidden = true; err.textContent = T('cloud.badCode'); err.hidden = false; });
       }}));
     });
   }
@@ -3135,6 +3150,7 @@ window.RASEEDO_DEMO={"schema":"raseedo.backup/1","generatedAt":"2026-09-19T00:00
         }
       });
       const m = /[#&]join=([^&]+)/.exec(location.hash || '');
+      const mo = /[#&]owner=([^&]+)/.exec(location.hash || '');
       const start = () => {
         w.Cloud.detectRole().then(() => {
           if (w.Cloud.meta.role === 'person'){
@@ -3144,9 +3160,14 @@ window.RASEEDO_DEMO={"schema":"raseedo.backup/1","generatedAt":"2026-09-19T00:00
               renderGuest();
             });
           }
+          if (w.Cloud.meta.role === 'owner'){
+            if (S.db.demo) clearDemoBeforeLink();
+            render();
+            return w.Cloud.pullChanges().then(()=>{ render(); w.Cloud.sync(); })
+                   .catch(()=>{ render(); });
+          }
           if (!had || !S.db.transactions.length) loadDemo(false);
           render();
-          w.Cloud.sync();
         }).catch(() => { if (!had || !S.db.transactions.length) loadDemo(false); render(); });
       };
       if (m){
@@ -3155,6 +3176,15 @@ window.RASEEDO_DEMO={"schema":"raseedo.backup/1","generatedAt":"2026-09-19T00:00
           .then(() => w.Cloud.claimPerson(decodeURIComponent(m[1])))
           .then(() => start())
           .catch(() => { U.toast(T('guest.joinErr')); start(); });
+      } else if (mo){
+        history.replaceState(null, '', location.pathname);
+        w.Cloud.ensureSession()
+          .then(() => { clearDemoBeforeLink();
+                        return w.Cloud.rpc('claim_owner', { p_token: decodeURIComponent(mo[1]) }); })
+          .then(r => { w.Cloud.meta.householdId = r.householdId; w.Cloud.meta.role = 'owner';
+                       return w.Cloud.pullChanges(); })
+          .then(() => start())
+          .catch(() => { U.toast(T('cloud.badCode')); start(); });
       } else start();
       if ('serviceWorker' in navigator){
         try { navigator.serviceWorker.register('sw.js', { scope:'./' }).catch(()=>{}); } catch(e){}
